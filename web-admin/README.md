@@ -1,1 +1,1 @@
-# Official Repo of Web App of Hostel mess Portal
+# Official Repo of Web App of Hostel Mess Portal
