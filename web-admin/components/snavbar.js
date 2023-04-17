@@ -1,5 +1,6 @@
 import React from "react";
 import '../node_modules/font-awesome/css/font-awesome.min.css';
+import Link from 'next/link'
 // import { GiHamburgerMenu } from "react-icons/gi";
 // import { Disclosure } from "@headlessui/react";
 // import {
@@ -29,29 +30,34 @@ function SideNavbar() {
             <nav className="s-sidebar__nav">
                <ul>
                   <li>
-                     <a className="s-sidebar__nav-link" href="/admin">
+                     <Link className="s-sidebar__nav-link" href='/'>
                         <i className="fa fa-home"></i><em>Dashboard</em>
-                     </a>
+                     </Link>
                   </li>
                   <li>
-                     <a className="s-sidebar__nav-link" href="/admin/notifications">
+                     <Link className="s-sidebar__nav-link" href="/admin/notifications">
                         <i className="fa fa-bell"></i><em>Notifications</em>
-                     </a>
+                     </Link>
                   </li>
                   <li>
-                     <a className="s-sidebar__nav-link" href="/admin/announcements">
-                        <i className="fa fa-camera"></i><em>Announcements</em>
-                     </a>
+                     <Link className="s-sidebar__nav-link" href="/admin/announcements">
+                        <i className="fa fa-bullhorn"></i><em>Announcements</em>
+                     </Link>
                   </li>
                   <li>
-                     <a className="s-sidebar__nav-link" href="/admin/messmenu">
-                        <i className="fa-regular fa-pizza-slice"></i><em>Mess Menu</em>
-                     </a>
+                     <Link className="s-sidebar__nav-link" href="/admin/messmenu">
+                        <i className="fa fa-cutlery"></i><em>Mess Menu</em>
+                     </Link>
                   </li>
                   <li>
-                     <a className="s-sidebar__nav-link" href="/admin/verification">
-                        <i className="fa fa-bell"></i><em>Verification</em>
-                     </a>
+                     <Link className="s-sidebar__nav-link" href="/admin/verification">
+                        <i class="fa fa-check" aria-hidden="true"></i><em>Verification</em>
+                     </Link>
+                  </li>
+                  <li>
+                     <Link className="s-sidebar__nav-link" href="/admin/allstudents">
+                        <i className="fa fa-male"></i><em>Students</em>
+                     </Link>
                   </li>
                </ul>
             </nav>

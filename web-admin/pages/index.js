@@ -75,7 +75,6 @@ const Sdashboard = () => {
                                 {dinner}
                             </p>
                         </div>
-
                     </li>
                 </ul>
 
