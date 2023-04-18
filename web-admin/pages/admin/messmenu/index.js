@@ -20,7 +20,7 @@ function Messmenu() {
         <div className='py-8'></div>
             <Sidenavbar />
             <div class="messmenuwrapper">
-                <div><h1 style={{margin:'0 auto',fontFamily:'cursive'}} className='text-2xl'>Mess Menu</h1></div>
+                <div className='lg:ml-12 md:ml-20 py-8'><h1  className='text-2xl' style={{fontFamily:'cursive'}}>Mess Menu</h1></div>
                 <ul class="messmenuflex messmenucards">
                     {
                         users.map((user) => {

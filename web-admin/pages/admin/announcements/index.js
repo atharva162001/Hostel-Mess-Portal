@@ -30,13 +30,14 @@ function Announcements() {
     getUsers();
   }, []);
   return (
-    <div className="lg:ml-60 md:ml-12">
+    <div className="xl:ml-64 lg:ml-60 md:ml-12">
       <Sidenavbar />
-      <div style={{ margin: '0 auto' }}>
-        <form class="cf" onSubmit={(event) => handleSubmit(event)} className='announcementform'>
+      <div >
+       <div className='xl:ml-64 lg:ml-60 md:ml-12'> 
+        <form class="cf" onSubmit={(event) => handleSubmit(event)} className="announcementform ">
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div class="half left cf">
-              <h1>Announcement Form</h1>
+              <h1 className='text-2xl'style={{fontFamily:'cursive'}}>Announcement Form</h1>
               <input type="text" id="input-subject" placeholder="Subject" onChange={(e) => setsubject(e.target.value)} />
             </div>
             <div class="half right cf">
@@ -44,10 +45,13 @@ function Announcements() {
               <button class="inline-block px-4 py-2 text-gray-500 font-semibold border-2 border-gray-500 rounded-md hover:bg-gray-700 hover:text-white hover:border-gray-700 focus:outline-none focus:ring focus:ring-green-100 m-4" value="submit">
                 Submit
               </button>
+              <div className='py-8'><h1 className='text-2xl'style={{fontFamily:'cursive'}}>Previous notifications</h1></div>
             </div>
           </div>
         </form>
-        <div className="lg:ml-80 md:ml-12"><h1>Previous notifications</h1></div>
+        
+        </div>
+        
         <div className="m-8">
           {
             users.map((user) => {
