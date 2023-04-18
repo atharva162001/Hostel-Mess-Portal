@@ -10,14 +10,14 @@ const  QRCodeReader = dynamic(() => import('../../../components/qr/QrCodeReader'
 
 const App = () => {
     return (
-        <div className="bg-white dark:bg-gray-900">
+        <div className="bg-white dark:bg-gray-900 pb-16">
             <Head>
                 <title>QR code</title>
             </Head>
             {/* <QR></QR> */}
             <Heading></Heading>
             <QRCodeReader></QRCodeReader>
-            <hr className="w-48 h-1 mx-auto my-4 bg-zinc-500 border-0 rounded md:my-10 dark:bg-gray-700"></hr>
+            {/* <hr className="w-48 h-1 mx-auto my-4 bg-zinc-500 border-0 rounded md:my-10 dark:bg-gray-700"></hr> */}
             {/* <QR></QR> */}
         </div>
     );
