@@ -143,18 +143,18 @@
 }
 
 /* Dashboard Cards  */
-.wrapper {
+.messmenuwrapper {
   margin: 0 auto;
   width: 90%;
 }
 
-.cards {
+.messmenucards {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.cards li {
+.messmenucards li {
   /* border: 2px solid #490A3D; */
   border-radius:5px;
   background-color: white;
@@ -162,28 +162,28 @@
   flex: 1 1 200px;
 }
 
-.cards h2 {
+.messmenucards h2 {
   background-color: #490A3D;
   margin: 0;
   padding: 10px;
 }
 
-.cards p {
+.messmenucards p {
   padding: 5px;
 }
 
-.flex {
+.messmenuflex {
   display: flex;
   flex-wrap: wrap;
   /* margin: 0 -10px; */
 }
 
-.flex li {
+.messmenuflex li {
   flex: 1 1 200px;
   margin: 10px;
 }
 
-.grid {
+.messmenugrid {
   display: grid;
   grid-template-columns: repeat(3,1fr);
   /*grid-template-columns: repeat(auto-fill, minmax(200px 1fr));*/
@@ -192,12 +192,12 @@
 
 
 /* Announcement Form  */
-form {
+.announcementform {
   max-width: 600px;
   text-align: center;
   margin: 20px auto;
 }
-form input, form textarea {
+.announcementform input, .announcementform textarea {
   border: 0;
   outline: 0;
   padding: 1em;
@@ -213,22 +213,22 @@ form input, form textarea {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   resize: none;
 }
-form input:focus, form textarea:focus {
+.announcementform input:focus, .announcementform textarea:focus {
   -moz-box-shadow: 0 0px 2px #e74c3c !important;
   -webkit-box-shadow: 0 0px 2px #e74c3c !important;
   box-shadow: 0 0px 2px #e74c3c !important;
 }
-form #input-submit {
+.announcementform #input-submit {
   color: white;
   background: #e74c3c;
   cursor: pointer;
 }
-form #input-submit:hover {
+.announcementform #input-submit:hover {
   -moz-box-shadow: 0 1px 1px 1px rgba(170, 170, 170, 0.6);
   -webkit-box-shadow: 0 1px 1px 1px rgba(170, 170, 170, 0.6);
   box-shadow: 0 1px 1px 1px rgba(170, 170, 170, 0.6);
 }
-form textarea {
+.announcementform textarea {
   height: 126px;
 }
 
@@ -274,7 +274,7 @@ form textarea {
   --darkgray: #2c3e50;
 }
 
-select {
+.verificationselect {
   /* Reset Select */
   appearance: none;
   outline: 0;
@@ -289,11 +289,11 @@ select {
   cursor: pointer;
 }
 /* Remove IE arrow */
-select::-ms-expand {
+.verificationselect::-ms-expand {
   display: none;
 }
 /* Custom Select wrapper */
-.select {
+.verificationselect {
   position: relative;
   display: flex;
   width: 20em;
@@ -302,7 +302,7 @@ select::-ms-expand {
   overflow: hidden;
 }
 /* Arrow */
-.select::after {
+.verificationselect::after {
   content: '\25BC';
   position: absolute;
   top: 0;
@@ -313,7 +313,7 @@ select::-ms-expand {
   pointer-events: none;
 }
 /* Transition */
-.select:hover::after {
+.verificationselect:hover::after {
   color: #f39c12;
 }
 

@@ -19,9 +19,9 @@ function Messmenu() {
         <div className="lg:ml-60 md:ml-12">
         <div className='py-8'></div>
             <Sidenavbar />
-            <div class="wrapper">
+            <div class="messmenuwrapper">
                 <div><h1 style={{margin:'0 auto',fontFamily:'cursive'}} className='text-2xl'>Mess Menu</h1></div>
-                <ul class="flex cards">
+                <ul class="messmenuflex messmenucards">
                     {
                         users.map((user) => {
                             return (
@@ -36,7 +36,7 @@ function Messmenu() {
                         })
                     }
                 </ul>
-                <ul class="flex cards">
+                <ul class="messmenuflex messmenucards">
                     {
                         users.map((user) => {
                             return (
@@ -51,7 +51,7 @@ function Messmenu() {
                         })
                     }
                 </ul>
-                <ul class="flex cards">
+                <ul class="messmenuflex messmenucards">
                 {
                     users.map((user) => {
                         return (

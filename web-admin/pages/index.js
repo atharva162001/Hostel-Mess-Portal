@@ -40,8 +40,8 @@ const Sdashboard = () => {
         <div className="lg:ml-52 md:ml-12">
             <div className="py-5"></div>
             <SideNavbar />
-            <div class="wrapper">
-                <ul class="flex cards">
+            <div class="messmenuwrapper">
+                <ul class="messmenuflex messmenucards">
                     <li class="rounded overflow-hidden shadow-lg">
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2">Student&apos;s count</div>

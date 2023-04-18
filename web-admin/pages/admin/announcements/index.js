@@ -33,7 +33,7 @@ function Announcements() {
     <div className="lg:ml-60 md:ml-12">
       <Sidenavbar />
       <div style={{ margin: '0 auto' }}>
-        <form class="cf" onSubmit={(event) => handleSubmit(event)}>
+        <form class="cf" onSubmit={(event) => handleSubmit(event)} className='announcementform'>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div class="half left cf">
               <h1>Announcement Form</h1>

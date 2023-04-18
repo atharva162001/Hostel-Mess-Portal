@@ -40,8 +40,8 @@ function Activation() {
         <div className="lg:ml-60 md:ml-12">
             <div className='py-8'></div>
             <Sidenavbar/>
-            <div class="select" style={{margin:'0 auto'}}>
-                <select onChange={(e) => setoptionstatus(e.target.value)}>
+            <div class="verificationselect" style={{margin:'0 auto'}}>
+                <select onChange={(e) => setoptionstatus(e.target.value)} class="verificationselect">
                     <option value="0">Pending</option>
                     <option value="1">Approved</option>
                     <option value="2">Rejected</option>
