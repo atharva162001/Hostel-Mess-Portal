@@ -1,8 +1,8 @@
 import React, { useState,useEffect } from 'react';
-import InventoryIndiCard from "./InventoryIndiCard"
-import AddProduct from "./AddProduct" 
+import InventoryIndiCard from "../Inventory/InventoryIndiCard"
+import AddProduct from "../Inventory/AddProduct" 
 import Heading from "./Heading"
-import {db} from "../firebase-config"
+import {db} from "../../firebase-config"
 import { getDocs, collection } from "@firebase/firestore";
 
 

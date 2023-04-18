@@ -1,8 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import { Form, Input,  InputNumber,Button,Select } from 'antd';
-import InventoryIndiCard from "./InventoryIndiCard"
-import AddProduct from "./AddProduct" 
-import {db} from "../firebase-config"
+import InventoryIndiCard from "../Inventory/InventoryIndiCard"
+import AddProduct from "../Inventory/AddProduct" 
+import {db} from "../../firebase-config"
 import { getDocs, collection,addDoc } from "@firebase/firestore";
 
 

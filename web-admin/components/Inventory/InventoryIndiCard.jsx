@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Space, Button, Typography, InputNumber } from 'antd';
-import {db} from "../firebase-config"
+import {db} from "../../firebase-config"
 import {updateDoc,doc,deleteDoc } from "@firebase/firestore";
 
 const { Text } = Typography;

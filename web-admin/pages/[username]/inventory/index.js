@@ -1,5 +1,5 @@
 import React from 'react'
-import InventoryMapCard from "../../../components/InventoryMapCard"
+import InventoryMapCard from "../../../components/Inventory/InventoryMapCard"
 import Head from 'next/head'
 
 function index() {
