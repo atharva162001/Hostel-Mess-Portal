@@ -1,5 +1,8 @@
-import React from "react";
-import { useState, useEffect } from 'react';
+import { async } from "@firebase/util";
+import { useContext, useEffect, useState } from "react";
+import SideNavbar from "../components/snavbar";
+// import { AppContext } from "../../../context/AppContext";
+// import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "../firebase-config";
 import { collection, getDocs } from "@firebase/firestore"
 import Link from 'next/link';
