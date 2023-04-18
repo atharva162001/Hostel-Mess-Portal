@@ -332,9 +332,9 @@
 
 
 /* Login Page Admin */
+/* -----------------------------------comment out */
 
-
-.container {
+/* .container {
   width: 400px;
   margin: auto;
   padding: 36px 48px 48px 48px;
@@ -405,4 +405,25 @@ button {
 .btn--form:hover {
   background-color: #fdf2e9;
   color: #292727;
+} */
+
+
+/* -----------------------------new login added------------- */
+
+/* .homepageImage {
+  background-image: url("/images/homepage.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat:no-repeat;
+} */
+
+.homepageImage {
+  background-image: url("/images/homepage.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dark .homepageImage {
+  background-image: url("/images/homepageDark.png");
 }
