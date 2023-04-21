@@ -59,6 +59,11 @@ function SideNavbar() {
                         <i className="fa fa-male"></i><em>Students</em>
                      </Link>
                   </li>
+                  <li>
+                     <Link className="s-sidebar__nav-link" href="/admin/reminder">
+                        <i className="fa fa-male"></i><em>Reminder</em>
+                     </Link>
+                  </li>
                </ul>
             </nav>
          </div>

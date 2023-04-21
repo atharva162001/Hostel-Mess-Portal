@@ -1,9 +1,9 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import InventoryIndiCard from "../Inventory/InventoryIndiCard"
-import AddProduct from "../Inventory/AddProduct" 
+import AddProduct from "../Inventory/AddProduct"
 import Heading from "./Heading"
-import {db} from "../../firebase-config"
-import { getDocs, collection } from "@firebase/firestore";
+import { db } from "../../firebase-config"
+import { getDocs, collection, addDoc, doc } from "@firebase/firestore";
 
 
 const App = () => {
@@ -20,17 +20,17 @@ const App = () => {
 
         getProducts();
         // console.log(products);
-      }, []);
+    }, []);
 
 
-      return (
+    return (
         <div>
             <Heading></Heading>
             <AddProduct></AddProduct>
-            <div className='justify-center grid  min-[550px]:grid-cols-2 max-[763px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'> 
+            <div className='justify-center grid  min-[550px]:grid-cols-2 max-[763px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
                 {products.map((product) => {
                     return (
-                        <InventoryIndiCard  
+                        <InventoryIndiCard
                             key={product.id}
                             id={product.id}
                             name={product.name}
@@ -41,8 +41,8 @@ const App = () => {
                 })}
             </div>
         </div>
-        
-      );
+
+    );
 };
 
 export default App;
