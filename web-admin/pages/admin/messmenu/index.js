@@ -1,75 +1,42 @@
-import React from 'react'
-import Sidenavbar from '../../../components/snavbar'
+import React from "react";
+import Sidenavbar from "../../../components/snavbar";
 import { db } from "../../../firebase-config";
 import { useState, useEffect } from "react";
 import { getDocs, collection } from "@firebase/firestore";
+import Menucard from "../../../components/MessMenu/Menucard";
+import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
+
 function Messmenu() {
-    const [users, setUsers] = useState([]);
-    const userCollectionRef = collection(db, "Messmenu");
-    useEffect(() => {
-        const getUsers = async () => {
-            const data = await getDocs(userCollectionRef);
-            // console.log(data);
-            setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        };
+  const [users, setUsers] = useState([]);
+  const userCollectionRef = collection(db, "Messmenu");
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(userCollectionRef);
+      // console.log(data);
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
 
-        getUsers();
-    }, []);
-    return (
-        <div className="lg:ml-60 md:ml-12">
-        <div className='py-8'></div>
-            <Sidenavbar />
-            <div class="messmenuwrapper">
-                <div className='lg:ml-12 md:ml-20 py-8'><h1  className='text-2xl' style={{fontFamily:'cursive'}}>Mess Menu</h1></div>
-                <ul class="messmenuflex messmenucards">
-                    {
-                        users.map((user) => {
-                            return (
-                                (user.id === '1' || user.id === '2' || user.id === '3') ? ( <li class="rounded overflow-hidden shadow-lg" key={user.id}>
-                                    <div class="px-6 py-4">
-                                        <div class="font-bold text-xl mb-2 text-green-500">{user.Day}</div>
-                                        <p style={{fontFamily:'sans-serif'}} className='py-2'><b><h1 style={{color:'#8795A1',fontFamily:'cursive'}}>Breakfast: </h1></b>{user.Breakfast}</p>
-                                        <p style={{fontFamily:'sans-serif'}} className='py-2'><b><h1 style={{color:'#8795A1',fontFamily:'cursive'}}>Lunch: </h1></b> {user.Lunch}</p>
-                                        <p style={{fontFamily:'sans-serif'}} className='py-2'><b><h1 style={{color:'#8795A1',fontFamily:'cursive'}}>Dinner: </h1></b> {user.Dinner}</p>
-                                    </div>
-                                </li>):(console.log('not found')));
-                        })
-                    }
-                </ul>
-                <ul class="messmenuflex messmenucards">
-                    {
-                        users.map((user) => {
-                            return (
-                                (user.id === '4' || user.id === '5' || user.id === '6') ? ( <li class="rounded overflow-hidden shadow-lg" key={user.id} >
-                                    <div class="px-6 py-4">
-                                        <div class="font-bold text-xl mb-2 text-green-500">{user.Day}</div>
-                                        <p style={{fontFamily:'sans-serif'}} className='py-2'><b ><h1 style={{color:'#8795A1',fontFamily:'cursive'}}>Breakfast: </h1> </b>{user.Breakfast}</p>
-                                        <p style={{fontFamily:'sans-serif'}} className='py-2'><b><h1 style={{color:'#8795A1',fontFamily:'cursive'}}>Lunch: </h1></b> {user.Lunch}</p>
-                                        <p style={{fontFamily:'sans-serif'}} className='py-2'><b><h1 style={{color:'#8795A1',fontFamily:'cursive'}}>Dinner: </h1></b> {user.Dinner}</p>
-                                    </div>
-                                </li>):(console.log('not found')));
-                        })
-                    }
-                </ul>
-                <ul class="messmenuflex messmenucards">
-                {
-                    users.map((user) => {
-                        return (
-                            (user.id === '7') ? ( <li class="rounded overflow-hidden shadow-lg" key={user.id}>
-                                <div class="px-6 py-4">
-                                    <div class="font-bold text-xl mb-2 text-green-500">{user.Day}</div>
-                                    <p style={{fontFamily:'sans-serif'}} className='py-2'><b><h1 style={{color:'#8795A1',fontFamily:'cursive'}}>Breakfast:</h1></b>{user.Breakfast}</p>
-                                    <p style={{fontFamily:'sans-serif'}} className='py-2'><b><h1 style={{color:'#8795A1',fontFamily:'cursive'}}>Lunch: </h1></b> {user.Lunch}</p>
-                                    <p style={{fontFamily:'sans-serif'}} className='py-2'><b><h1 style={{color:'#8795A1',fontFamily:'cursive'}}>Dinner: </h1> </b> {user.Dinner}</p>
-                                </div>
-                            </li>):(console.log('not found')));
-                    })
-                }
-            </ul>
-
-            </div>
-        </div>
-    )
+    getUsers();
+  }, []);
+  return (
+    <div>
+      <div className="mt-10 font-extrabold text-transparent text-4xl bg-clip-text bg-gradient-to-r from-gray-700 to-slate-700 text-center">Mess Menu</div>
+      <div className="lg:ml-20 lg:mr-20 lg:mt-10 md:ml-12 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4">
+        {users.map((user) => {
+          return (
+            <Menucard
+              key={user.id}
+              id={user.id}
+              Day={user.Day}
+              Breakfast={user.Breakfast}
+              Lunch={user.Lunch}
+              Dinner={user.Dinner}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
-export default Messmenu
+export default Messmenu;

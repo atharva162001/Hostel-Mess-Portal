@@ -15,7 +15,7 @@ const InventoryIndiCard = ({id,name,content,category}) => {
   
   // updates the product quantity
   function onUpdate() {
-    setProductContent(newContent);
+    // setProductContent(newContent);
 
     const updateProduct = async (id) => {
     
