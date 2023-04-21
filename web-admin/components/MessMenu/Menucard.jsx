@@ -4,7 +4,7 @@ import { db } from "../../firebase-config";
 import { updateDoc, doc } from "@firebase/firestore";
 
 const Menucard = (props) => {
-  const [visi1, setVisi1] = useState(false);
+  const [visi1, setVisi1] = useState(false); //setting visibilities
   const [visi2, setVisi2] = useState(false);
   const [visi3, setVisi3] = useState(false);
   const [content1, setContent1] = useState(props.Breakfast);
