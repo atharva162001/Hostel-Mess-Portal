@@ -1,20 +1,50 @@
 import React, { useState } from 'react';
 import { QrReader } from 'react-qr-reader';
 import {db} from "../../firebase-config"
-import { doc, updateDoc, arrayUnion } from "@firebase/firestore";
+import { doc,setDoc,updateDoc,arrayUnion,getDoc } from "@firebase/firestore";
 // import { getDocs, collection,addDoc } from "@firebase/firestore";
 
 const Test = () => {
 
-  // const userCollectionRef = collection(db, "dailyqrdata");
+  // creating a date
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  const docId = `${yyyy}-${mm}-${dd}`;
+
+  // const qrDocRef = doc(db, "dailyqrdata", docId);
+
+// rules
+// match /dailyqrdata/{date} {
+//   allow create: if request.auth != null && request.resource.id == date;
+//   // other rules here
+// }
 
    const [qr,setQr]=useState("NoData"); 
+// ----------------only sets the doc to new variable
+  //  const addQr = async (newData) => {
+  //   setQr(newData);
+  //   const docRef = doc(db, "dailyqrdata", docId);
+  //   console.log(newData);
+  //   await setDoc(docRef, { qr: newData });
+  
+  //   setTimeout(function () {
+  //     location.reload();
+  //   }, 1000);
+  // };
 
-   const addQr = async (newData) => {
+  // ------------------do both things if exits then add to it and if not then make new
+  const addQr = async (newData) => {
     setQr(newData);
-    const qrDocRef = doc(db, "dailyqrdata", "wlFKmvwoW48mR4fbLURq");
-    console.log(newData);
-    await updateDoc(qrDocRef, {qr: arrayUnion(newData)});
+    const docRef = doc(db, "dailyqrdata", docId);
+  
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      await updateDoc(docRef, { qr: arrayUnion(newData) });
+    } else {
+      await setDoc(docRef, { qr: [newData] });
+    }
   
     setTimeout(function () {
       location.reload();
