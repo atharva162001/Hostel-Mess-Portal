@@ -4,25 +4,14 @@ import SideNavbar from "../../components/snavbar";
 // import { AppContext } from "../../../context/AppContext";
 // import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "../../firebase-config";
-import { getDocs, collection } from "@firebase/firestore";
+import { getDocs, collection, doc, getDoc } from "@firebase/firestore";
 import Link from "next/link";
+import { format } from 'date-fns';
+
 const Sdashboard = () => {
     const [weekday, setWeekday] = useState('');
-    useEffect(() => {
-        const today = new Date();
-        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const weekday = daysOfWeek[today.getDay()];
-        setWeekday(weekday);
-    }, []);
     const [users, setUsers] = useState([]);
     const userCollectionRef = collection(db, "Messmenu");
-    useEffect(() => {
-        const getUsers = async () => {
-            const data = await getDocs(userCollectionRef);
-            setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        };
-        getUsers();
-    }, []);
     const [breakfast, setbreakfast] = useState('');
     const [lunch, setlunch] = useState('');
     const [dinner, setdinner] = useState('');
@@ -30,49 +19,54 @@ const Sdashboard = () => {
         setbreakfast(user.Breakfast);
         setlunch(user.Lunch);
         setdinner(user.Dinner);
-    }
-    useEffect(() => {
-        users.map((user) => {
-            user.Day === weekday ? (handlemessmenu(user)) : (console.log('hello'));
-        })
-    })
+    };
     const dailyEntrydataref = collection(db, "dailyqrdata");
-    const [dailydata, setDailydata] = useState([]);
+    const [dailydata, setDailydata] = useState({});
     const [singleUser, setSingleuser] = useState([]);
     const studentCollectionref = collection(db, "studentdata");
     const [studentData, setStudentdata] = useState([]);
     const [finalData, setFinaldata] = useState([]);
     useEffect(() => {
+        const today = new Date();
+        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const weekday = daysOfWeek[today.getDay()];
+        setWeekday(weekday);
+        const getUsers = async () => {
+            const data = await getDocs(userCollectionRef);
+            setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
+        getUsers();
         const getDailydata = async () => {
-            const dailyStudentdata = await getDocs(dailyEntrydataref);
-            setDailydata(dailyStudentdata.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+            const currentDate = new Date();
+            const formattedDate = format(currentDate, 'yyyy-MM-dd');
+            const docRef = doc(db, "dailyqrdata", formattedDate);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                setDailydata(docSnap.data());
+                const userData = docSnap.data().qr.flatMap((oneentry) => {
+                    const parts = oneentry.split('_');
+                    const sing = { id: parts[0], regid: parts[0], guests: parts[1] };
+                    return sing;
+                });
+                setSingleuser(userData);
+            }
         };
         getDailydata();
-    },[]);
-    useEffect(() => {
+
         const getStudentdata = async () => {
             const studentdata = await getDocs(studentCollectionref);
             setStudentdata(studentdata.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         };
         getStudentdata();
-    },[]);
-
+    }, []);
     useEffect(() => {
-        const check = async () => {
-            const getsingleuserdata = () => {
-                const userData = dailydata.flatMap((daily) => {
-                    return daily.qr.map((oneentry) => {
-                        const parts = oneentry.split('_');
-                        const sing = { id: parts[0], regid: parts[0], guests: parts[1] };
-                        return sing;
-                    });
-                });
-                setSingleuser(userData);
-            };
-            await getsingleuserdata();
-        };
-        check();
-    });
+        users.map((user) => {
+            if (user.Day === weekday) {
+                handlemessmenu(user)
+            }
+        })
+    }, [users, weekday])
+
 
     return (
         <div className="lg:ml-52 md:ml-12">
