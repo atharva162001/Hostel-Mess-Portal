@@ -35,9 +35,13 @@ const Sdashboard = () => {
         users.map((user) => {
             user.Day === weekday ? (handlemessmenu(user)) : (console.log('hello'));
         })
-    },[])
+    })
     const dailyEntrydataref = collection(db, "dailyqrdata");
     const [dailydata, setDailydata] = useState([]);
+    const [singleUser, setSingleuser] = useState([]);
+    const studentCollectionref = collection(db, "studentdata");
+    const [studentData, setStudentdata] = useState([]);
+    const [finalData, setFinaldata] = useState([]);
     useEffect(() => {
         const getDailydata = async () => {
             const dailyStudentdata = await getDocs(dailyEntrydataref);
@@ -45,16 +49,16 @@ const Sdashboard = () => {
         };
         getDailydata();
     },[]);
-    const [singleUser, setSingleuser] = useState([]);
-    const studentCollectionref = collection(db, "studentdata");
-    const [studentData, setStudentdata] = useState([]);
-    const [finalData, setFinaldata] = useState([]);
+    useEffect(() => {
+        const getStudentdata = async () => {
+            const studentdata = await getDocs(studentCollectionref);
+            setStudentdata(studentdata.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
+        getStudentdata();
+    },[]);
+
     useEffect(() => {
         const check = async () => {
-            const getStudentdata = async () => {
-                const studentdata = await getDocs(studentCollectionref);
-                setStudentdata(studentdata.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-            };
             const getsingleuserdata = () => {
                 const userData = dailydata.flatMap((daily) => {
                     return daily.qr.map((oneentry) => {
@@ -65,11 +69,10 @@ const Sdashboard = () => {
                 });
                 setSingleuser(userData);
             };
-            await getStudentdata();
             await getsingleuserdata();
         };
         check();
-    },[]);
+    });
 
     return (
         <div className="lg:ml-52 md:ml-12">
