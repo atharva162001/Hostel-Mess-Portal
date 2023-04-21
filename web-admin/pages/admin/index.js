@@ -35,7 +35,7 @@ const Sdashboard = () => {
         users.map((user) => {
             user.Day === weekday ? (handlemessmenu(user)) : (console.log('hello'));
         })
-    })
+    },[])
     const dailyEntrydataref = collection(db, "dailyqrdata");
     const [dailydata, setDailydata] = useState([]);
     useEffect(() => {
@@ -44,7 +44,7 @@ const Sdashboard = () => {
             setDailydata(dailyStudentdata.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         };
         getDailydata();
-    });
+    },[]);
     const [singleUser, setSingleuser] = useState([]);
     const studentCollectionref = collection(db, "studentdata");
     const [studentData, setStudentdata] = useState([]);
@@ -69,7 +69,7 @@ const Sdashboard = () => {
             await getsingleuserdata();
         };
         check();
-    });
+    },[]);
 
     return (
         <div className="lg:ml-52 md:ml-12">
