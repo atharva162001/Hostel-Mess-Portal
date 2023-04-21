@@ -2,11 +2,27 @@ import React from 'react'
 import Sidenavbar from '../../../components/snavbar'
 import PleaseLog from "../../../components/login/PleaseLog"
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { db } from "../../../firebase-config";
 import { collection, getDocs, addDoc, doc, updateDoc, deleteDoc } from "@firebase/firestore"
 function Notifications() {
-    // for login
-    const [loggeduser, setLoggedUser] = useState("nouser");
+     // ------------------------------authentication---------------------------------
+    //  -----------------------------------------------------------------------------
+     const router=useRouter();
+     const [loggeduser,setLoggedUser]=useState("nouser");
+     const [paramUser,setParamUser]=useState("");
+     useEffect(() => {
+         // checking login
+         setLoggedUser(localStorage.getItem("username"));
+         const url = router.asPath;
+         const result = url.split('/');
+         const Param = result[result.length - 2];
+         setParamUser(Param);
+ 
+     }, [router]);
+ 
+    //  --------------------------------------------------------------------------------------
+     // --------------------------------------authentication end------------------------------
 
     const currentDate = new Date();
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -14,9 +30,6 @@ function Notifications() {
     const [users, setUsers] = useState([]);
     const userCollectionRef = collection(db, "complaints");
     useEffect(() => {
-        // checking login
-        setLoggedUser(localStorage.getItem("username"));
-
         const getUsers = async () => {
             const data = await getDocs(userCollectionRef);
             // console.log(data);
@@ -27,7 +40,7 @@ function Notifications() {
     }, []);
 
     let content;
-    if (loggeduser === 'nouser') {
+    if (loggeduser !== paramUser) {
         content = <PleaseLog></PleaseLog>;
     } else {
         content = (

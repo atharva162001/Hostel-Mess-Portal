@@ -1,21 +1,33 @@
 import React from 'react'
 import Sidenavbar from '../../../components/snavbar'
-import PleaseLog from "../../../components/login/LoginForm"
+import PleaseLog from "../../../components/login/PleaseLog"
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { db } from "../../../firebase-config";
 import { collection, getDocs } from "@firebase/firestore"
 function Reminder() {
-    // for login
-    const [loggeduser, setLoggedUser] = useState("nouser");
+     // ------------------------------authentication---------------------------------
+    //  -----------------------------------------------------------------------------
+    const router=useRouter();
+    const [loggeduser,setLoggedUser]=useState("nouser");
+    const [paramUser,setParamUser]=useState("");
+    useEffect(() => {
+        // checking login
+        setLoggedUser(localStorage.getItem("username"));
+        const url = router.asPath;
+        const result = url.split('/');
+        const Param = result[result.length - 2];
+        setParamUser(Param);
 
+    }, [router]);
+
+   //  --------------------------------------------------------------------------------------
+    // --------------------------------------authentication end------------------------------
     const [products, setProducts] = useState([]);
     const inventoryCollectionRef = collection(db, "inventory");
 
     //fetching products using firebase and useEffect
     useEffect(() => {
-        // for login
-        setLoggedUser(localStorage.getItem("username"));
-
         const getProducts = async () => {
             const data = await getDocs(inventoryCollectionRef);
             // console.log(data);
@@ -28,7 +40,7 @@ function Reminder() {
 
 
     let content;
-    if (loggeduser === 'nouser') {
+    if (loggeduser !== paramUser) {
         content = <PleaseLog></PleaseLog>;
     } else {
         content = (

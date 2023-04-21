@@ -1,12 +1,28 @@
 import React from 'react'
 import Sidenavbar from '../../../components/snavbar'
 import PleaseLog from '../../../components/login/PleaseLog'
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { db } from "../../../firebase-config";
 import { collection, getDocs, addDoc } from "@firebase/firestore"
 function Announcements() {
-  // for login
-  const [loggeduser, setLoggedUser] = useState("nouser");
+     // ------------------------------authentication---------------------------------
+    //  -----------------------------------------------------------------------------
+    const router=useRouter();
+    const [loggeduser,setLoggedUser]=useState("nouser");
+    const [paramUser,setParamUser]=useState("");
+    useEffect(() => {
+        // checking login
+        setLoggedUser(localStorage.getItem("username"));
+        const url = router.asPath;
+        const result = url.split('/');
+        const Param = result[result.length - 2];
+        setParamUser(Param);
+
+    }, [router]);
+
+   //  --------------------------------------------------------------------------------------
+    // --------------------------------------authentication end------------------------------
 
   const [subject, setsubject] = useState('');
   const [message, setmessage] = useState('');
@@ -29,9 +45,6 @@ function Announcements() {
 
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    // for login
-    setLoggedUser(localStorage.getItem("username"));
-
     const getUsers = async () => {
       const data = await getDocs(userCollectionRef);
       // console.log(data);
@@ -41,7 +54,7 @@ function Announcements() {
   }, []);
 
   let content;
-  if (loggeduser === 'nouser') {
+  if (loggeduser !== paramUser) {
     content = <PleaseLog></PleaseLog>;
   } else {
     content = (

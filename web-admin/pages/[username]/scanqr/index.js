@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 // import QR from "../../../components/qr/QrCodeReader";
+import { useRouter } from "next/router";
 import PleaseLog from "../../../components/login/PleaseLog"
 import Head from "next/head";
 import dynamic from "next/dynamic";
@@ -10,17 +11,28 @@ const QRCodeReader = dynamic(() => import('../../../components/qr/QrCodeReader')
 });
 
 const App = () => {
-
-    const [loggeduser, setLoggedUser] = useState("nouser");
+     // ------------------------------authentication---------------------------------
+    //  -----------------------------------------------------------------------------
+    const router=useRouter();
+    const [loggeduser,setLoggedUser]=useState("nouser");
+    const [paramUser,setParamUser]=useState("");
     useEffect(() => {
-        // for login
+        // checking login
         setLoggedUser(localStorage.getItem("username"));
-    }, []);
+        const url = router.asPath;
+        const result = url.split('/');
+        const Param = result[result.length - 2];
+        setParamUser(Param);
+
+    }, [router]);
+
+   //  --------------------------------------------------------------------------------------
+    // --------------------------------------authentication end------------------------------
 
 
     
     let content;
-    if (loggeduser === 'nouser') {
+    if (loggeduser !== paramUser) {
         content = <PleaseLog></PleaseLog>;
     } else {
         content = (

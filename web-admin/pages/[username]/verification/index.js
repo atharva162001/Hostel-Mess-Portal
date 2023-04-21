@@ -1,19 +1,32 @@
 import React from 'react'
 import { db } from '../../../firebase-config'
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 import PleaseLog from "../../../components/login/PleaseLog"
 import { getDocs, collection, doc, updateDoc } from "@firebase/firestore";
 import Sidenavbar from '../../../components/snavbar'
 function Activation() {
-    const [loggeduser, setLoggedUser] = useState("nouser");
-    // login purpose
+     // ------------------------------authentication---------------------------------
+    //  -----------------------------------------------------------------------------
+    const router=useRouter();
+    const [loggeduser,setLoggedUser]=useState("nouser");
+    const [paramUser,setParamUser]=useState("");
+    useEffect(() => {
+        // checking login
+        setLoggedUser(localStorage.getItem("username"));
+        const url = router.asPath;
+        const result = url.split('/');
+        const Param = result[result.length - 2];
+        setParamUser(Param);
+
+    }, [router]);
+
+   //  --------------------------------------------------------------------------------------
+    // --------------------------------------authentication end------------------------------
     const [optionstatus, setoptionstatus] = useState('0');
     const [users, setUsers] = useState([]);
     const userCollectionRef = collection(db, "activation");
     useEffect(() => {
-        // for login
-        setLoggedUser(localStorage.getItem("username"));
-
         const getUsers = async () => {
             const data = await getDocs(userCollectionRef);
             // console.log(data);
@@ -46,7 +59,7 @@ function Activation() {
     }
 
     let content;
-    if (loggeduser === 'nouser') {
+    if (loggeduser !== paramUser) {
         content = <PleaseLog></PleaseLog>;
     } else {
         content = (

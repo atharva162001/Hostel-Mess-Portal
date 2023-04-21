@@ -1,6 +1,7 @@
 import React from "react";
 import Sidenavbar from "../../../components/snavbar";
 import PleaseLog from "../.././../components/login/PleaseLog"
+import { useRouter } from "next/router";
 import { db } from "../../../firebase-config";
 import { useState, useEffect } from "react";
 import { getDocs, collection } from "@firebase/firestore";
@@ -8,15 +9,27 @@ import Menucard from "../../../components/MessMenu/Menucard";
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 
 function Messmenu() {
-  // for login
-  const [loggeduser, setLoggedUser] = useState("nouser");
+     // ------------------------------authentication---------------------------------
+    //  -----------------------------------------------------------------------------
+    const router=useRouter();
+    const [loggeduser,setLoggedUser]=useState("nouser");
+    const [paramUser,setParamUser]=useState("");
+    useEffect(() => {
+        // checking login
+        setLoggedUser(localStorage.getItem("username"));
+        const url = router.asPath;
+        const result = url.split('/');
+        const Param = result[result.length - 2];
+        setParamUser(Param);
+
+    }, [router]);
+
+   //  --------------------------------------------------------------------------------------
+    // --------------------------------------authentication end------------------------------
 
   const [users, setUsers] = useState([]);
   const userCollectionRef = collection(db, "Messmenu");
   useEffect(() => {
-    // checking login
-    setLoggedUser(localStorage.getItem("username"));
-
     const getUsers = async () => {
       const data = await getDocs(userCollectionRef);
       // console.log(data);
@@ -27,7 +40,7 @@ function Messmenu() {
   }, []);
 
   let content;
-  if (loggeduser === 'nouser') {
+  if (loggeduser !== paramUser) {
     content = <PleaseLog></PleaseLog>;
   } else {
     content = (<div>
