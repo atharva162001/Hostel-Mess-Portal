@@ -79,38 +79,38 @@ const Sdashboard = () => {
             <div className="py-5">
             </div>
             <SideNavbar />
-            <div class="messmenuwrapper">
-                <ul class="messmenuflex messmenucards">
-                    <li class="rounded overflow-hidden shadow-lg">
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2">Student&apos;s count</div>
-                            <p class="text-gray-700 text-base">
+            <div className="messmenuwrapper">
+                <ul className="messmenuflex messmenucards">
+                    <li className="rounded overflow-hidden shadow-lg">
+                        <div className="px-6 py-4">
+                            <div className="font-bold text-xl mb-2">Student&apos;s count</div>
+                            <p className="text-gray-700 text-base">
                                 {singleUser.length}
                             </p>
                         </div>
                     </li>
-                    <li class="rounded overflow-hidden shadow-lg">
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2">{weekday}&apos;s Breakfast</div>
-                            <p class="text-gray-700 text-base">
+                    <li className="rounded overflow-hidden shadow-lg">
+                        <div className="px-6 py-4">
+                            <div className="font-bold text-xl mb-2">{weekday}&apos;s Breakfast</div>
+                            <p className="text-gray-700 text-base">
                                 {breakfast}
                             </p>
                         </div>
 
                     </li>
-                    <li class="rounded overflow-hidden shadow-lg">
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2">{weekday}&apos;s Lunch</div>
-                            <p class="text-gray-700 text-base">
+                    <li className="rounded overflow-hidden shadow-lg">
+                        <div className="px-6 py-4">
+                            <div className="font-bold text-xl mb-2">{weekday}&apos;s Lunch</div>
+                            <p className="text-gray-700 text-base">
                                 {lunch}
                             </p>
                         </div>
 
                     </li>
-                    <li class="rounded overflow-hidden shadow-lg">
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2">{weekday}&apos;s Dinner</div>
-                            <p class="text-gray-700 text-base">
+                    <li className="rounded overflow-hidden shadow-lg">
+                        <div className="px-6 py-4">
+                            <div className="font-bold text-xl mb-2">{weekday}&apos;s Dinner</div>
+                            <p className="text-gray-700 text-base">
                                 {dinner}
                             </p>
                         </div>
@@ -129,22 +129,22 @@ const Sdashboard = () => {
                             ans !== 0 ? (
                                 <div key={ans.id}>
                                     <div className=" mb-2 rounded overflow-hidden shadow-lg flex mx-4 w-30%" key={ans.id}>
-                                        <div class="sm:flex sm:justify-between sm:gap-4 sm:w-50%">
+                                        <div className="sm:flex sm:justify-between sm:gap-4 sm:w-50%">
                                             <div className="p-2" style={{ display: 'flex', flexDirection: 'row' }}>
                                                 <div style={{ display: 'flex', flexDirection: 'row' }} >
-                                                    <h3 class="text-lg text-gray-900 sm:text-xl m-6">
+                                                    <h3 className="text-lg text-gray-900 sm:text-xl m-6">
                                                         {ans.name}
                                                     </h3>
-                                                    <h3 class="text-lg text-gray-900 sm:text-xl m-6">
+                                                    <h3 className="text-lg text-gray-900 sm:text-xl m-6">
                                                         {ans.regid}
                                                     </h3>
-                                                    <h3 class="text-lg text-gray-900 sm:text-xl m-6">
+                                                    <h3 className="text-lg text-gray-900 sm:text-xl m-6">
                                                         {fin.guests}
                                                     </h3>
                                                     <Link href={`mailto:${ans.email}`}>
                                                         <h3 className="button text-lg text-blue-500 sm:text-xl m-6">{ans.email}</h3>
                                                     </Link>
-                                                    <button class="inline-block px-4 py-2 text-green-500 font-semibold border-2 border-green-500 rounded-md hover:bg-green-700 hover:text-white hover:border-green-700 focus:outline-none focus:ring focus:ring-green-100 m-4">
+                                                    <button className="inline-block px-4 py-2 text-green-500 font-semibold border-2 border-green-500 rounded-md hover:bg-green-700 hover:text-white hover:border-green-700 focus:outline-none focus:ring focus:ring-green-100 m-4">
                                                         Profile
                                                     </button>
                                                 </div>

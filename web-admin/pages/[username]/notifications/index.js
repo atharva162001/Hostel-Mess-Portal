@@ -1,15 +1,22 @@
 import React from 'react'
 import Sidenavbar from '../../../components/snavbar'
+import PleaseLog from "../../../components/login/PleaseLog"
 import { useState, useEffect } from 'react';
 import { db } from "../../../firebase-config";
 import { collection, getDocs, addDoc, doc, updateDoc, deleteDoc } from "@firebase/firestore"
 function Notifications() {
+    // for login
+    const [loggeduser, setLoggedUser] = useState("nouser");
+
     const currentDate = new Date();
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const dateString = currentDate.toLocaleDateString('en-US', options);
     const [users, setUsers] = useState([]);
     const userCollectionRef = collection(db, "complaints");
     useEffect(() => {
+        // checking login
+        setLoggedUser(localStorage.getItem("username"));
+
         const getUsers = async () => {
             const data = await getDocs(userCollectionRef);
             // console.log(data);
@@ -18,37 +25,44 @@ function Notifications() {
 
         getUsers();
     }, []);
-    return (
-        <div className="lg:ml-60 md:ml-12">
-            <div className='py-8'></div>
-            <Sidenavbar />
-            <div>
-                {
-                    users.map((user) => {
-                        return (
-                            <div className=" mb-4 rounded overflow-hidden shadow-lg flex mx-4 w-30%" key={user.id}>
-                                <div class="sm:flex sm:justify-between sm:gap-4 sm:w-50%">
-                                    <div className="p-4">
-                                        <h3 class="text-lg text-gray-900 sm:text-xl">
-                                            {user.username}
-                                        </h3>
-                                        <p >
-                                            {user.useremail}
-                                        </p>
-                                        <p>{user.postdate}</p>
-                                        <p class="mt-1 text-sm font-medium text-gray-600">{user.usermessage}</p>
+
+    let content;
+    if (loggeduser === 'nouser') {
+        content = <PleaseLog></PleaseLog>;
+    } else {
+        content = (
+            <div className="lg:ml-60 md:ml-12">
+                <div className='py-8'></div>
+                <Sidenavbar />
+                <div>
+                    {
+                        users.map((user) => {
+                            return (
+                                <div className=" mb-4 rounded overflow-hidden shadow-lg flex mx-4 w-30%" key={user.id}>
+                                    <div class="sm:flex sm:justify-between sm:gap-4 sm:w-50%">
+                                        <div className="p-4">
+                                            <h3 class="text-lg text-gray-900 sm:text-xl">
+                                                {user.username}
+                                            </h3>
+                                            <p >
+                                                {user.useremail}
+                                            </p>
+                                            <p>{user.postdate}</p>
+                                            <p class="mt-1 text-sm font-medium text-gray-600">{user.usermessage}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        );
+                            );
 
 
-                    })
-                }
+                        })
+                    }
+                </div>
+
             </div>
-
-        </div>
-    )
+        )
+    }
+    return content;
 }
 
 export default Notifications
