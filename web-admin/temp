@@ -157,7 +157,39 @@
 
 
 
-
+<div>
+<table>
+    <caption>Statement Summary</caption>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Reg ID</th>
+            <th scope="col">Guest</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+    {
+        singleUser.map((fin) => {
+            var ans = 0;
+            studentData.map((stu) => {
+                stu.regid === fin.regid ? (ans = stu) : console.log("not found")
+            })
+            return (
+                ans !== 0 ? (
+                    <tr>
+                    <td data-label="Account">{ans.name}</td>
+                    <td data-label="Due Date">{ans.regid}</td>
+                    <td data-label="Amount">{fin.guests}</td>
+                    <td data-label="Period">{ans.email}</td>
+                </tr>
+                ) : (console.log("not found"))
+                );
+            })
+    }   
+    </tbody>
+</table>
+</div>
 
 
 

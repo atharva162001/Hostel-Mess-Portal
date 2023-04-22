@@ -7,11 +7,11 @@ import { db } from "../../../firebase-config";
 import { collection, getDocs } from "@firebase/firestore"
 import Link from 'next/link';
 function Allstudents() {
-     // ------------------------------authentication---------------------------------
+    // ------------------------------authentication---------------------------------
     //  -----------------------------------------------------------------------------
-    const router=useRouter();
-    const [loggeduser,setLoggedUser]=useState("nouser");
-    const [paramUser,setParamUser]=useState("");
+    const router = useRouter();
+    const [loggeduser, setLoggedUser] = useState("nouser");
+    const [paramUser, setParamUser] = useState("");
     useEffect(() => {
         // checking login
         setLoggedUser(localStorage.getItem("username"));
@@ -22,7 +22,7 @@ function Allstudents() {
 
     }, [router]);
 
-   //  --------------------------------------------------------------------------------------
+    //  --------------------------------------------------------------------------------------
     // --------------------------------------authentication end------------------------------
 
     const [users, setUsers] = useState([]);
@@ -43,36 +43,36 @@ function Allstudents() {
         content = <PleaseLog></PleaseLog>;
     } else {
         content = (
-            <div className="lg:ml-60 md:ml-12">
-                <div className='py-8'></div>
-
+            <div className="">
+                <div className=''></div>
                 <div>
-                    {
-                        users.map((user) => {
-                            return (
-                                <div className=" mb-2 rounded overflow-hidden shadow-lg flex mx-4 w-30%" key={user.id}>
-                                    <div class="sm:flex sm:justify-between sm:gap-4 sm:w-50%">
-                                        <div className="p-2" style={{ display: 'flex', flexDirection: 'row' }}>
-                                            <div style={{ display: 'flex', flexDirection: 'row' }} >
-                                                <h3 class="text-lg text-gray-900 sm:text-xl m-6">
-                                                    {user.name}
-                                                </h3>
-                                                <h3 class="text-lg text-gray-900 sm:text-xl m-6">
-                                                    {user.regid}
-                                                </h3>
-                                                <Link href={`mailto:${user.email}`}>
-                                                    <h3 className="button text-lg text-blue-500 sm:text-xl m-6">{user.email}</h3>
-                                                </Link>
-                                                <button class="inline-block px-4 py-2 text-green-500 font-semibold border-2 border-green-500 rounded-md hover:bg-green-700 hover:text-white hover:border-green-700 focus:outline-none focus:ring focus:ring-green-100 m-4">
-                                                    Profile
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })
-                    }
+                    <table>
+                        <caption>All Students</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">NAME</th>
+                                <th scope="col">REG ID</th>
+                                <th scope="col">EMAIL</th>
+                                <th scope="col">PROFILE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                users.map((user) => {
+                                    return (
+
+                                        <tr key={user.id}>
+                                            <td data-label="Name">{user.name}</td>
+                                            <td data-label="REG ID">{user.regid}</td>
+                                            <td data-label="EMAIL" className="text-blue-600"><Link href={`mailto:${user.email}`}>{user.email}</Link></td>
+                                            <td data-label="PROFILE" className="text-blue-600">PROFILE</td>
+                                        </tr>
+
+                                    );
+                                })
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

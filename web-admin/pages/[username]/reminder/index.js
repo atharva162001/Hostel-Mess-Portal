@@ -45,8 +45,8 @@ function Reminder() {
         content = <PleaseLog></PleaseLog>;
     } else {
         content = (
-            <div className="lg:ml-60 md:ml-12">
-                <div className='py-8'></div>
+            <div className="">
+                <div className='py-4'></div>
                 
                 <div>
                     {

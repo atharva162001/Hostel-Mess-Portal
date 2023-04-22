@@ -1,10 +1,7 @@
 import React from 'react'
 import Sidenavbar from '../../../components/snavbar'
-<<<<<<< HEAD
-=======
 import PleaseLog from '../../../components/login/PleaseLog'
 import { useRouter } from 'next/router';
->>>>>>> b30982c27c88b438f9aaa92c3ccb99e063ae5a87
 import { useState, useEffect } from 'react';
 import { db } from "../../../firebase-config";
 import { collection, getDocs, addDoc } from "@firebase/firestore"
@@ -55,55 +52,15 @@ function Announcements() {
     };
     getUsers();
   }, []);
-<<<<<<< HEAD
-  return (
-    <div className="xl:ml-64 lg:ml-60 md:ml-12">
-      <Sidenavbar />
-      <div >
-        <div className='xl:ml-64 lg:ml-60 md:ml-12'>
-          <form class="cf" onSubmit={(event) => handleSubmit(event)} className="announcementform ">
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <div class="half left cf">
-                <h1 className='text-2xl' style={{ fontFamily: 'cursive' }}>Announcement Form</h1>
-                <input type="text" id="input-subject" placeholder="Subject" onChange={(e) => setsubject(e.target.value)} />
-              </div>
-              <div class="half right cf">
-                <textarea name="message" type="text" id="input-message" placeholder="Message" onChange={(e) => setmessage(e.target.value)}></textarea>
-                <button class="inline-block px-4 py-2 text-gray-500 font-semibold border-2 border-gray-500 rounded-md hover:bg-gray-700 hover:text-white hover:border-gray-700 focus:outline-none focus:ring focus:ring-green-100 m-4" value="submit">
-                  Submit
-                </button>
-                <div className='py-8'><h1 className='text-2xl' style={{ fontFamily: 'cursive' }}>Previous notifications</h1></div>
-              </div>
-            </div>
-          </form>
-
-        </div>
-
-        <div className="m-8">
-          {
-            users.map((user) => {
-              return (
-                <div className=" mb-4 rounded overflow-hidden shadow-lg flex mx-4 w-30%" key={user.id}>
-                  <div class="sm:flex sm:justify-between sm:gap-4 sm:w-50%">
-                    <div className="p-4">
-                      <h3 class="text-lg text-gray-900 sm:text-xl">
-                        {user.usersubject}
-                      </h3>
-                      <h3 class="text-lg text-gray-900 sm:text-xl">
-                        {user.postdate}
-                      </h3>
-                      <p class="mt-1 text-sm font-medium text-gray-600">{user.usermessage}</p>
-=======
 
   let content;
   if (loggeduser !== paramUser) {
     content = <PleaseLog></PleaseLog>;
   } else {
     content = (
-      <div className="xl:ml-64 lg:ml-60 md:ml-12">
-      
+      <div className="" >
         <div >
-          <div className='xl:ml-64 lg:ml-60 md:ml-12'>
+          <div className='' style={{margin:'0 auto'}}>
             <form class="cf" onSubmit={(event) => handleSubmit(event)} className="announcementform ">
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <div class="half left cf">
@@ -137,7 +94,6 @@ function Announcements() {
                         </h3>
                         <p class="mt-1 text-sm font-medium text-gray-600">{user.usermessage}</p>
                       </div>
->>>>>>> b30982c27c88b438f9aaa92c3ccb99e063ae5a87
                     </div>
                   </div>
                 );

@@ -4,7 +4,7 @@ import SideNavbar from "../../components/snavbar";
 // import { AppContext } from "../../../context/AppContext";
 // import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "../../firebase-config";
-import { getDocs, collection,doc,getDoc } from "@firebase/firestore";
+import { getDocs, collection, doc, getDoc } from "@firebase/firestore";
 import Link from "next/link";
 import format from "date-fns/format";
 const Sdashboard = () => {
@@ -70,7 +70,6 @@ const Sdashboard = () => {
         <div className="">
             <div className="">
             </div>
-            
             <div className="messmenuwrapper">
                 <ul className="messmenuflex messmenucards">
                     <li className="rounded overflow-hidden shadow-lg">
@@ -110,45 +109,40 @@ const Sdashboard = () => {
                 </ul>
 
             </div>
-            <div className="">
-                {
-                    singleUser.map((fin) => {
-                        var ans = 0;
-                        studentData.map((stu) => {
-                            stu.regid === fin.regid ? (ans = stu) : console.log("not found")
-                        })
-                        return (
-                            ans !== 0 ? (
-                                <div key={ans.id}>
-                                    <div className=" mb-2 rounded overflow-hidden shadow-lg flex mx-4 w-30%" key={ans.id}>
-                                        <div className="sm:flex sm:justify-between sm:gap-4 sm:w-50%">
-                                            <div className="p-2" style={{ display: 'flex', flexDirection: 'row' }}>
-                                                <div style={{ display: 'flex', flexDirection: 'row' }} >
-                                                    <h3 className="text-lg text-gray-900 sm:text-xl m-6">
-                                                        {ans.name}
-                                                    </h3>
-                                                    <h3 className="text-lg text-gray-900 sm:text-xl m-6">
-                                                        {ans.regid}
-                                                    </h3>
-                                                    <h3 className="text-lg text-gray-900 sm:text-xl m-6">
-                                                        {fin.guests}
-                                                    </h3>
-                                                    <Link href={`mailto:${ans.email}`}>
-                                                        <h3 className="button text-lg text-blue-500 sm:text-xl m-6">{ans.email}</h3>
-                                                    </Link>
-                                                    <button className="inline-block px-4 py-2 text-green-500 font-semibold border-2 border-green-500 rounded-md hover:bg-green-700 hover:text-white hover:border-green-700 focus:outline-none focus:ring focus:ring-green-100 m-4">
-                                                        Profile
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ) : (console.log("not found"))
-                        );
-                    })
-                }
+            <div>
+                <table>
+                    <caption>Daily Students</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">NAME</th>
+                            <th scope="col">REG ID</th>
+                            <th scope="col">GUESTS</th>
+                            <th scope="col">EMAIL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            singleUser.map((fin) => {
+                                var ans = 0;
+                                studentData.map((stu) => {
+                                    stu.regid === fin.regid ? (ans = stu) : console.log("not found")
+                                })
+                                return (
+                                    ans !== 0 ? (
+                                        <tr>
+                                            <td data-label="Name">{ans.name}</td>
+                                            <td data-label="REG ID">{ans.regid}</td>
+                                            <td data-label="GUESTS">{fin.guests}</td>
+                                            <td data-label="EMAIL" className="text-blue-600"><Link  href={`mailto:${ans.email}`}>{ans.email}</Link></td>
+                                        </tr>
+                                    ) : (console.log("not found"))
+                                );
+                            })
+                        }
+                    </tbody>
+                </table>
             </div>
+
         </div>
     );
 }

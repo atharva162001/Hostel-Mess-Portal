@@ -44,9 +44,8 @@ function Notifications() {
         content = <PleaseLog></PleaseLog>;
     } else {
         content = (
-            <div className="lg:ml-60 md:ml-12">
-                <div className='py-8'></div>
-                <Sidenavbar />
+            <div className="">
+                <div className='py-4'></div>
                 <div>
                     {
                         users.map((user) => {
