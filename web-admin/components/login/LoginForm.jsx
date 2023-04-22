@@ -23,14 +23,16 @@ function LoginForm() {
                     : (<></>);
             });
 
-
+        // setting local storage for future user
         console.log(values);
         if (status == 200) {
             localStorage.setItem("username", values.username);
-            localStorage.setItem("email",users );
+            localStorage.setItem("name",values.name );
             toast("Logged Successsfully!");
             router.push("/"+ values.username);
         } else {
+            localStorage.setItem("username", "nouser");
+            localStorage.setItem("name","nouser" );
             toast("Invalid credentials!");
             router.push("/");
         }
@@ -38,6 +40,10 @@ function LoginForm() {
 
 
       useEffect(() => {
+        // setting logged state to be initial if loaded
+        localStorage.setItem("username", "nouser");
+            localStorage.setItem("name","nouser" );
+
         const getUsers = async () => {
         const data = await getDocs(userCollectionRef);
         // console.log(data);
