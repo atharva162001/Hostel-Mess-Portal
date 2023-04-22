@@ -19,8 +19,7 @@ function Notifications() {
         getUsers();
     }, []);
     return (
-        <div className="lg:ml-60 md:ml-12">
-            <div className='py-8'></div>
+        <div className="">
             <Sidenavbar />
             <div>
                 {

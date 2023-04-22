@@ -30,10 +30,10 @@ function Announcements() {
     getUsers();
   }, []);
   return (
-    <div className="xl:ml-64 lg:ml-60 md:ml-12">
+    <div className="">
       <Sidenavbar />
       <div >
-       <div className='xl:ml-64 lg:ml-60 md:ml-12'> 
+       <div className=''> 
         <form class="cf" onSubmit={(event) => handleSubmit(event)} className="announcementform ">
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div class="half left cf">

@@ -75,9 +75,7 @@ const Sdashboard = () => {
     });
 
     return (
-        <div className="lg:ml-52 md:ml-12">
-            <div className="py-5">
-            </div>
+        <div className="">
             <SideNavbar />
             <div class="messmenuwrapper">
                 <ul class="messmenuflex messmenucards">

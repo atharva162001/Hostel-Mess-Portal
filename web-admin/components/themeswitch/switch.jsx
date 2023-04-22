@@ -18,7 +18,7 @@ function Switch() {
 
   return (
     <div>
-         <div className="icon-container text-center pr-4"  onClick={ModeHandler} >
+         <div className="icon-container text-center pt-0 pr-4"  onClick={ModeHandler} >
                             {dark ? (
                                 <LightModeIcon
                                     className="text-yellow-400"

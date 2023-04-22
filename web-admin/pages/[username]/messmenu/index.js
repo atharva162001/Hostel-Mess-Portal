@@ -20,6 +20,7 @@ function Messmenu() {
   }, []);
   return (
     <div>
+    <Sidenavbar/>
       <div className="mt-10 font-extrabold text-transparent text-4xl bg-clip-text bg-gradient-to-r from-gray-700 to-slate-700 text-center">Mess Menu</div>
       <div className="lg:ml-20 lg:mr-20 lg:mt-10 md:ml-12 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4">
         {users.map((user) => {

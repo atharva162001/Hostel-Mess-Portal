@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import Heading from "../../../components/qr/Heading"
+import SideNavbar from "../../../components/snavbar";
 
 const  QRCodeReader = dynamic(() => import('../../../components/qr/QrCodeReader'), {
     ssr: false,
@@ -11,6 +12,7 @@ const  QRCodeReader = dynamic(() => import('../../../components/qr/QrCodeReader'
 const App = () => {
     return (
         <div className="bg-white dark:bg-gray-900 pb-16">
+        <SideNavbar/>
             <Head>
                 <title>QR code</title>
             </Head>
