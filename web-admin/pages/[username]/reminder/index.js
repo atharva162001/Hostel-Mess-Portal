@@ -1,12 +1,16 @@
-import React from 'react'
+import { React, useRef } from 'react'
 import Sidenavbar from '../../../components/snavbar'
 import { useState, useEffect } from 'react';
 import { db } from "../../../firebase-config";
-import { collection, getDocs} from "@firebase/firestore"
+import { collection, getDocs } from "@firebase/firestore"
+import emailjs from '@emailjs/browser';
+import Router, { useRouter } from 'next/router';
+import Placeorderemail from '@/components/stockorder/placeorderemail';
 function Reminder() {
     const [products, setProducts] = useState([]);
     const inventoryCollectionRef = collection(db, "inventory");
-
+    const router = useRouter();
+    const form = useRef();
     //fetching products using firebase and useEffect
     useEffect(() => {
         const getProducts = async () => {
@@ -18,37 +22,25 @@ function Reminder() {
         getProducts();
         // console.log(products);
     }, []);
-  return (
-    <div className="lg:ml-60 md:ml-12">
+    return (
+        <div className="lg:ml-60 md:ml-12">
             <div className='py-8'></div>
             <Sidenavbar />
-            <div>
-                {
-                    products.map((user) => {
+            {
+                products.map((user) => {
+                    if(user.content<=10){
                         return (
-                           user.content<=10 ? (  <div className=" mb-4 rounded overflow-hidden shadow-lg flex mx-4 w-30%" key={user.id}>
-                           <div class="sm:flex sm:justify-between sm:gap-4 sm:w-50%">
-                               <div className="p-4">
-                                   <h3 class="text-lg text-gray-900 sm:text-xl">
-                                       Order {user.name}
-                                   </h3>
-                                   <p >
-                                       Current content {user.content}{user.symbol}
-                                   </p>
-                                   <p>{user.postdate}</p>
-                                   <p class="mt-1 text-sm font-medium text-gray-600">Only {user.content}{user.symbol} is remaining in the stock, please order the necessary supplies.</p>
-                               </div>
-                           </div>
-                       </div>):(console.log(""))
-                        );
-
-
-                    })
-                }
-            </div>
+                              <Placeorderemail name={user.name} content={user.content} symbol={user.symbol} key={user.id} id={user.id}/>
+                         );
+                    }
+                   
+                })
+            }
 
         </div>
-  )
+
+    )
 }
 
 export default Reminder
+
