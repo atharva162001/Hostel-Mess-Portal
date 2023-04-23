@@ -43,12 +43,12 @@ const Menucard = (props) => {
   }
 
   return (
-    <div>
-      <div class="min-[1401px]:h-80 min-[767px]:h-96 max-[768px]:mx-8  px-6 py-4 my-4 bg-slate-100 rounded-lg shadow-lg">
+    <div className="">
+      <div class="min-[1401px]:h-80 min-[767px]:h-96 max-[768px]:mx-8  px-6 py-4 my-4 dark:bg-gray-500 bg-gray-100 rounded-lg shadow-lg">
         {/* <h1>{props.Day}</h1> */}
-        <div className="font-bold text-xl mb-2 text-[#27272a] text-center pb-2 border-b-4">{props.Day}</div>
+        <div className="font-bold text-xl mb-2 dark:text-black text-[#27272a] text-center pb-2 border-b-4">{props.Day}</div>
         <p className="my-2">
-          <div><span className="font-bold text-md mb-2 text-[#52525b] font-serif">Breakfast: </span><span className="text-[#64748b]">{props.Breakfast}</span></div>
+          <div><span className="font-bold text-md mb-2 dark:text-black text-[#52525b] font-serif">Breakfast: </span><span className="text-[#64748b]">{props.Breakfast}</span></div>
         
         {visi1 ? (
           <Space direction="vertical" size="middle">
@@ -70,7 +70,7 @@ const Menucard = (props) => {
         </p>
 
         <p className="my-2">
-        <div><span className="font-bold text-md mb-2 text-[#52525b] font-serif">Lunch: </span><span className="text-[#64748b] ">{props.Lunch}</span></div>
+        <div><span className="font-bold text-md mb-2 dark:text-black text-[#52525b] font-serif">Lunch: </span><span className="text-[#64748b] ">{props.Lunch}</span></div>
         
         {visi2 ? (
           <Space direction="vertical" size="middle">
@@ -91,7 +91,7 @@ const Menucard = (props) => {
         )}
         </p>
         <p className="my-2">
-        <div><span className="font-bold text-md mb-2 text-[#52525b] font-serif">Dinner: </span><span className="text-[#64748b]">{props.Dinner}</span></div>
+        <div><span className="font-bold text-md mb-2 dark:text-black text-[#52525b] font-serif">Dinner: </span><span className="text-[#64748b]">{props.Dinner}</span></div>
         
         {visi3 ? (
           <Space direction="vertical" size="middle">

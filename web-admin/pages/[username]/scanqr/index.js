@@ -37,7 +37,7 @@ const App = () => {
         content = <PleaseLog></PleaseLog>;
     } else {
         content = (
-            <div className="bg-white dark:bg-gray-900 pb-16">
+            <div className="bg-white dark:bg-gray-900 pb-16 pt-20">
                 <Head>
                     <title>QR code</title>
                 </Head>

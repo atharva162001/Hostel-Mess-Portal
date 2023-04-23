@@ -1,62 +1,37 @@
-import React, { useState, useEffect } from "react";
-import '../node_modules/font-awesome/css/font-awesome.min.css';
-import Link from 'next/link'
-import Switch from "./themeswitch/switch";
-// import { GiHamburgerMenu } from "react-icons/gi";
-
-
-function SideNavbar() {
-   const [username, setUsername] = useState("");
-
-   useEffect(() => {
-      // checking login
-      setUsername(localStorage.getItem("username"));
-   }, []);
+import Switch from "./themeswitch/switch"
+import React,{useEffect, useState} from "react";
+import Link from "next/link";
+function Navbar() {
+   const [userName,setUserName]=useState("");
+   const [showMobileMenu, setShowMobileMenu] = useState(false);
+   useEffect(()=>{
+      setUserName(localStorage.getItem("username"));
+   },[]);
    return (
-      <div>
-         <div className="flex items-center justify-evenly  bg-gray-600 dark:bg-gray-900 py-6">
-
-            <div className="flex items-center flex-shrink-0 text-white mr-6">
-               <img className="fill-current h-8 w-8 mr-2" alt="Messlogo" src="/logo.png" />
-               {/* <svg className="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" /></svg> */}
-               <span className="font-bold text-xl tracking-tight">VJTI Mess</span>
+      <div className="dark:bg-gray-900 bg-gray-400 z-10 w-full xl:grid xl:place-items-center fixed">
+         <nav className="dark:bg-gray-900 bg-gray-400 text-slate-200 xl:flex xl:container ">
+            <div className="flex">
+               <img className="mt-4 pb-4" src="/logo.png"/>
+               <Link className="m-4 text-lg text-black dark:text-white hover:text-white font-bold " href="/">VJTI MESS</Link>
+               <button className="px-2 pb-1 ml-auto mr-16 font-bold rounded text-black hover:rounded  dark:text-white hover:bg-blue-700 hover:text-white xl:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>Menu</button>
             </div>
+            <ul className={(showMobileMenu ? "" : "hidden") + ` xl:ml-2 xl:flex pb-2 xl:gap-0  `}>
+               <li className="py-2 grid place-items-center xl:mx-2"><Link href={`/${userName}/dashboard`} className="p-2  text-black dark:text-white text-center  rounded font-bold hover:bg-blue-700 hover:text-white">Dashboard</Link></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/inventory`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Inventory</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/notifications`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Notifications</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/announcements`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Announcements</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/verification`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Verification</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/messmenu`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">MessMenu</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/reminder`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Reminder</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/scanqr`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">QRScanner</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/allstudents`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">AllStudents</a></li>
 
-            <div className="w-full block flex-grow font-semibold lg:flex lg:items-center lg:w-auto">
-               <div className="text-sm lg:flex-grow">
-                  <a href={`/${username}`} className="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     Dashboard
-                  </a>
-                  <a href={`/${username}/announcements`} class="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     Announcements
-                  </a>
-                  <a href={`/${username}/notifications`} class="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     Notifications
-                  </a>
-                  <a href={`/${username}/reminder`} className="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     Reminders
-                  </a>
-                  <a href={`/${username}/scanqr`} className="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     QR Scanner
-                  </a>
-                  <a href={`/${username}/verification`} className="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     Verifications
-                  </a>
-                  <a href={`/${username}/messmenu`} className="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     Mess Menu
-                  </a>
-                  <a href={`/${username}/inventory`} className="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     Inventory
-                  </a>
-                  <a href={`/${username}/allstudents`} className="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     All Students
-                  </a>
-                  <Switch />
-               </div>
-            </div>
-         </div>
+            </ul>
+            <Switch></Switch>
+         </nav>
       </div>
-   )
+   );
 }
 
-export default SideNavbar;
+
+export default Navbar;
