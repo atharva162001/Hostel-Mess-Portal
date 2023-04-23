@@ -58,10 +58,10 @@ function Announcements() {
     content = <PleaseLog></PleaseLog>;
   } else {
     content = (
-      <div className="pt-20" >
+      <div className="pt-20 " >
         <div >
           <div className='' style={{margin:'0 auto'}}>
-            <form class="cf" onSubmit={(event) => handleSubmit(event)} className="announcementform ">
+            <form class="cf" onSubmit={(event) => handleSubmit(event)} className="announcementform">
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <div class="half left cf">
                   <h1 className='text-2xl' style={{ fontFamily: 'cursive' }}>Announcement Form</h1>
@@ -83,13 +83,13 @@ function Announcements() {
             {
               users.map((user) => {
                 return (
-                  <div className=" mb-4 rounded overflow-hidden shadow-lg flex mx-4 w-30%" key={user.id}>
+                  <div className="dark:bg-gray-900 mb-4 rounded-2xl overflow-hidden border shadow-xl flex mx-4 w-30%" key={user.id}>
                     <div class="sm:flex sm:justify-between sm:gap-4 sm:w-50%">
-                      <div className="p-4">
-                        <h3 class="text-lg text-gray-900 sm:text-xl">
+                      <div className="p-4 dark:text-gray-300 text-gray-900">
+                        <h3 class="text-lg  sm:text-xl">
                           {user.usersubject}
                         </h3>
-                        <h3 class="text-lg text-gray-900 sm:text-xl">
+                        <h3 class="text-lg  sm:text-xl">
                           {user.postdate}
                         </h3>
                         <p class="mt-1 text-sm font-medium text-gray-600">{user.usermessage}</p>

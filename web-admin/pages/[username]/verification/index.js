@@ -63,8 +63,7 @@ function Activation() {
         content = <PleaseLog></PleaseLog>;
     } else {
         content = (
-            <div className="">
-                <div className='py-8'></div>
+            <div className="pt-20">
                 <div class="verificationselect" style={{ margin: '0 auto' }}>
                     <select onChange={(e) => setoptionstatus(e.target.value)} class="verificationselect">
                         <option value="0">Pending</option>
@@ -75,7 +74,7 @@ function Activation() {
                 <div className='py-4'></div>
                 <div>
                 <table>
-                    <caption>Daily Students</caption>
+                    <caption className='font-bold'>Daily Students</caption>
                     <thead>
                         <tr>
                             <th scope="col">NAME</th>

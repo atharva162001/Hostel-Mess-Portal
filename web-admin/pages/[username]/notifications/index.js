@@ -44,16 +44,15 @@ function Notifications() {
         content = <PleaseLog></PleaseLog>;
     } else {
         content = (
-            <div className="">
-                <div className='py-4'></div>
+            <div className="pt-20">
                 <div>
                     {
                         users.map((user) => {
                             return (
-                                <div className=" mb-4 rounded overflow-hidden shadow-lg flex mx-4 w-30%" key={user.id}>
+                                <div className="dark:bg-gray-900 mb-4 rounded-xl overflow-hidden shadow-xl border  flex mx-4 w-30%" key={user.id}>
                                     <div class="sm:flex sm:justify-between sm:gap-4 sm:w-50%">
-                                        <div className="p-4">
-                                            <h3 class="text-lg text-gray-900 sm:text-xl">
+                                        <div className="p-4  dark:text-gray-300 text-gray-900 ">
+                                            <h3 class="text-lg sm:text-xl">
                                                 {user.username}
                                             </h3>
                                             <p >

@@ -43,7 +43,7 @@ function Allstudents() {
         content = <PleaseLog></PleaseLog>;
     } else {
         content = (
-            <div className="">
+            <div className="pt-20">
                 <div className=''></div>
                 <div>
                     <table>
