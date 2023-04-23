@@ -58,7 +58,7 @@ function Announcements() {
     content = <PleaseLog></PleaseLog>;
   } else {
     content = (
-      <div className="" >
+      <div className="pt-20" >
         <div >
           <div className='' style={{margin:'0 auto'}}>
             <form class="cf" onSubmit={(event) => handleSubmit(event)} className="announcementform ">

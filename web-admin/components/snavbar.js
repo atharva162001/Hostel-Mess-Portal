@@ -1,62 +1,51 @@
-import React, { useState, useEffect } from "react";
-import '../node_modules/font-awesome/css/font-awesome.min.css';
-import Link from 'next/link'
-import Switch from "./themeswitch/switch";
-// import { GiHamburgerMenu } from "react-icons/gi";
-
-
-function SideNavbar() {
-   const [username, setUsername] = useState("");
-
-   useEffect(() => {
-      // checking login
-      setUsername(localStorage.getItem("username"));
-   }, []);
+import { useRouter } from "next/router";
+import React from "react";
+function Navbar(props) {
+   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
+   const router=useRouter();
+   const setrouter=(e)=>{
+      e.preventDefault();
+      router.push(e.target.value);
+   }
    return (
-      <div>
-         <div className="flex items-center justify-evenly  bg-gray-600 dark:bg-gray-900 py-6">
-
-            <div className="flex items-center flex-shrink-0 text-white mr-6">
-               <img className="fill-current h-8 w-8 mr-2" alt="Messlogo" src="/logo.png" />
-               {/* <svg className="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" /></svg> */}
-               <span className="font-bold text-xl tracking-tight">VJTI Mess</span>
+      <div class="bg-black w-full xl:grid xl:place-items-center fixed">
+         <nav class="bg-black text-slate-200 lg:flex xl:container">
+            <div class="flex mr-auto">
+               <a class="m-4" href="#home">VJTI MESS</a>
+               <button class="px-2 ml-auto  rounded hover:bg-slate-800 hover:text-white lg:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>Menu</button>
             </div>
+            <ul class={(showMobileMenu ? "" : "hidden") + ` lg:ml-2 lg:flex `}>
+               <li class="py-2 grid place-items-center lg:mx-2"><a href='/' class="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-slate-800 hover:text-white">Dashboard</a></li>
+               <li class="py-2 grid place-items-center lg:mx-2"><a href='home' class="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-slate-800 hover:text-white">Inventory</a></li>
+               <li class="py-2 grid place-items-center lg:mx-2">
+                  <select class="p-2   text-center rounded font-bold bg-black hover:bg-slate-800 hover:text-white" onChange={(e)=>setrouter(e)}>
+                     <option value='/' class="p-2   text-center rounded font-bold  bg-black hover:text-white" ><li class="py-2 grid place-items-center lg:mx-2">Notification</li></option>
+                     <option  class="p-2   text-center rounded font-bold  bg-black hover:text-white" selected><li class="py-2 grid place-items-center lg:mx-2" selected>Select</li></option>
+                     <option value='/' class="p-2   text-center rounded font-bold  bg-black hover:text-white" ><li class="py-2 grid place-items-center lg:mx-2"><a href='home' class="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-slate-800 hover:text-white">Announcement</a></li></option>
+                     <option value='/' class="p-2   text-center rounded font-bold  bg-black hover:text-white"><li class="py-2 grid place-items-center lg:mx-2"><a href='home' class="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-slate-800 hover:text-white">Verification</a></li></option>
+                  </select>
+               </li>
+               <li class="py-2 grid place-items-center lg:mx-2"><a href='home' class="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-slate-800 hover:text-white">MessMenu</a></li>
+               <li class="py-2 grid place-items-center lg:mx-2"><a href='home' class="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-slate-800 hover:text-white">Reminder</a></li>
+               <li class="py-2 grid place-items-center lg:mx-2"><a href='home' class="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-slate-800 hover:text-white">QRScanner</a></li>
+               <li class="py-2 grid place-items-center lg:mx-2"><a href='home' class="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-slate-800 hover:text-white">AllStudents</a></li>
 
-            <div className="w-full block flex-grow font-semibold lg:flex lg:items-center lg:w-auto">
-               <div className="text-sm lg:flex-grow">
-                  <a href={`/${username}`} className="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     Dashboard
-                  </a>
-                  <a href={`/${username}/announcements`} class="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     Announcements
-                  </a>
-                  <a href={`/${username}/notifications`} class="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     Notifications
-                  </a>
-                  <a href={`/${username}/reminder`} className="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     Reminders
-                  </a>
-                  <a href={`/${username}/scanqr`} className="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     QR Scanner
-                  </a>
-                  <a href={`/${username}/verification`} className="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     Verifications
-                  </a>
-                  <a href={`/${username}/messmenu`} className="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     Mess Menu
-                  </a>
-                  <a href={`/${username}/inventory`} className="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     Inventory
-                  </a>
-                  <a href={`/${username}/allstudents`} className="block mt-4 lg:inline-block lg:mt-0  dark:text-white mr-4">
-                     All Students
-                  </a>
-                  <Switch />
-               </div>
-            </div>
-         </div>
+            </ul>
+         </nav>
       </div>
-   )
+   );
 }
 
-export default SideNavbar;
+function NavLink(props) {
+   return <li class="py-2 grid place-items-center lg:mx-2"><a href={`#${props.text.toLowerCase()}`} class="p-2 w-1/2 lg:w-28 text-center rounded font-bold hover:bg-slate-800 hover:text-white">{props.text}</a></li>
+}
+
+/*
+  Create Your Nabvar in myNavBar:
+  - @links - Array of strings representing nav links.
+           - Each <a> link item will have a href of #str.toLowerCase() for page navigation.
+  - @ctaText - string to be displayed for call to action link.
+*/
+
+
+export default Navbar;
