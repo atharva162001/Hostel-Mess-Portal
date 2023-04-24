@@ -48,7 +48,7 @@ const Menucard = (props) => {
         {/* <h1>{props.Day}</h1> */}
         <div className="font-bold text-xl mb-2 dark:text-black text-[#27272a] text-center pb-2 border-b-4">{props.Day}</div>
         <p className="my-2">
-          <div><span className="font-bold text-md mb-2 dark:text-black text-[#52525b] font-serif">Breakfast: </span><span className="text-[#64748b]">{props.Breakfast}</span></div>
+          <div><span className="font-bold text-md mb-2 dark:text-black text-gray-900 font-serif">Breakfast: </span><span className="text-gray-700 dark:text-white">{props.Breakfast}</span></div>
         
         {visi1 ? (
           <Space direction="vertical" size="middle">
@@ -59,18 +59,20 @@ const Menucard = (props) => {
                   setContent1(e.target.value);
                 }}
               />
-              <Button className="text-[#0c0a09]" onClick={submit1}>
+              <button class="rounded-lg px-4 py-2 bg-gray-700 text-gray-100 text-xs hover:bg-slate-300 hover:text-black" onClick={submit1}>Update</button>
+              {/* <Button className="text-[#0c0a09]" onClick={submit1}>
                 Update
-              </Button>
+              </Button> */}
             </Space.Compact>
           </Space>
         ) : (
-          <Button className="text-[#0c0a09]" onClick={() => setVisi1(true)}>Edit</Button>
+          <button class="rounded-lg px-4 py-1 bg-gray-700 text-gray-100 text-xs hover:bg-slate-300 hover:text-black" onClick={() => setVisi1(true)}>Edit</button>
+          
         )}
         </p>
 
         <p className="my-2">
-        <div><span className="font-bold text-md mb-2 dark:text-black text-[#52525b] font-serif">Lunch: </span><span className="text-[#64748b] ">{props.Lunch}</span></div>
+        <div><span className="font-bold text-md mb-2 dark:text-black text-gray-900 font-serif">Lunch: </span><span className="text-gray-700 dark:text-white ">{props.Lunch}</span></div>
         
         {visi2 ? (
           <Space direction="vertical" size="middle">
@@ -81,17 +83,15 @@ const Menucard = (props) => {
                   setContent2(e.target.value);
                 }}
               />
-              <Button className="text-[#0c0a09]" onClick={submit2}>
-                Update
-              </Button>
+              <button class="rounded-lg px-4 py-2 bg-gray-700 text-gray-100 text-xs hover:bg-slate-300 hover:text-black" onClick={submit2}>Update</button>
             </Space.Compact>
           </Space>
         ) : (
-          <Button className="text-[#0c0a09]" onClick={() => setVisi2(true)}>Edit</Button>
+          <button class="rounded-lg px-4 py-1 bg-gray-700 text-gray-100 text-xs hover:bg-slate-300 hover:text-black" onClick={() => setVisi2(true)}>Edit</button>
         )}
         </p>
         <p className="my-2">
-        <div><span className="font-bold text-md mb-2 dark:text-black text-[#52525b] font-serif">Dinner: </span><span className="text-[#64748b]">{props.Dinner}</span></div>
+        <div><span className="font-bold text-md mb-2 dark:text-black text-gray-900 font-serif">Dinner: </span><span className="text-gray-700 dark:text-white">{props.Dinner}</span></div>
         
         {visi3 ? (
           <Space direction="vertical" size="middle">
@@ -102,13 +102,11 @@ const Menucard = (props) => {
                   setContent3(e.target.value);
                 }}
               />
-              <Button className="text-[#0c0a09]" onClick={submit3}>
-                Update
-              </Button>
+              <button class="rounded-lg px-4 py-2 bg-gray-700 text-gray-100 text-xs hover:bg-slate-300 hover:text-black" onClick={submit3}>Update</button>
             </Space.Compact>
           </Space>
         ) : (
-          <Button className="text-[#0c0a09]" onClick={() => setVisi3(true)}>Edit</Button>
+          <button class="rounded-lg px-4 py-1 bg-gray-700 text-gray-100 text-xs hover:bg-slate-300 hover:text-black" onClick={() => setVisi3(true)}>Edit</button>
         )}
         </p>
       </div>

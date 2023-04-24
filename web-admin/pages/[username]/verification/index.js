@@ -24,6 +24,7 @@ function Activation() {
    //  --------------------------------------------------------------------------------------
     // --------------------------------------authentication end------------------------------
     const [optionstatus, setoptionstatus] = useState('0');
+    const[studentstatus,setstudentstatus]=useState('Pending');
     const [users, setUsers] = useState([]);
     const userCollectionRef = collection(db, "activation");
     useEffect(() => {
@@ -34,8 +35,12 @@ function Activation() {
         };
         getUsers();
     }, []);
-
-
+    useEffect(()=>{
+        const handlestatus=()=>{
+            optionstatus === '0' ? (setstudentstatus("Pending")):(optionstatus === '1'? (setstudentstatus("Approved")):(setstudentstatus("Rejected")))
+        }
+        handlestatus();
+    })
     const [currstate, setcurrstate] = useState('');
     const handlestate = async (user, userstate, event) => {
         event.preventDefault();
@@ -63,7 +68,7 @@ function Activation() {
         content = <PleaseLog></PleaseLog>;
     } else {
         content = (
-            <div className="pt-20">
+            <div className="pt-20 dark:bg-gray-900">
                 <div class="verificationselect" style={{ margin: '0 auto' }}>
                     <select onChange={(e) => setoptionstatus(e.target.value)} class="verificationselect">
                         <option value="0">Pending</option>
@@ -73,8 +78,8 @@ function Activation() {
                 </div>
                 <div className='py-4'></div>
                 <div>
-                <table>
-                    <caption className='font-bold'>Daily Students</caption>
+                <table >
+                    <caption className='font-bold dark:text-white'>{studentstatus} Applications</caption>
                     <thead>
                         <tr>
                             <th scope="col">NAME</th>
@@ -106,7 +111,7 @@ function Activation() {
                                 return (
                                 
                                     (optionstatus === '0' && user.status === '0') || (optionstatus === '1' && user.status === '1') || (optionstatus === '2' && user.status === '2') ? (
-                                        <tr>
+                                        <tr className='dark:bg-gray-900 dark:text-white'>
                                             <td data-label="Name">{user.name}</td>
                                             <td data-label="REG ID">{user.regid}</td>
                                             <td data-label="DOCUMENT" className='text-blue-600' onClick={(e) => window.open(user.pdf, '_blank')}>View</td>

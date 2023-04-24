@@ -67,12 +67,12 @@ const Sdashboard = () => {
     }, [users, weekday])
 
     return (
-        <div className=" pt-20">
+        <div className=" pt-20 dark:bg-gray-900">
             <div className="">
             </div>
             <div className="messmenuwrapper">
                 <ul className="messmenuflex messmenucards">
-                    <li className="rounded overflow-hidden shadow-lg">
+                    <li className="rounded overflow-hidden shadow-2xl">
                         <div className="px-6 py-4">
                             <div className="font-bold text-xl mb-2">Student&apos;s count</div>
                             <p className="text-gray-700 text-base">
@@ -80,7 +80,7 @@ const Sdashboard = () => {
                             </p>
                         </div>
                     </li>
-                    <li className="rounded overflow-hidden shadow-lg">
+                    <li className="rounded overflow-hidden shadow-2xl">
                         <div className="px-6 py-4">
                             <div className="font-bold text-xl mb-2">{weekday}&apos;s Breakfast</div>
                             <p className="text-gray-700 text-base">
@@ -89,7 +89,7 @@ const Sdashboard = () => {
                         </div>
 
                     </li>
-                    <li className="rounded overflow-hidden shadow-lg">
+                    <li className="rounded overflow-hidden shadow-2xl">
                         <div className="px-6 py-4">
                             <div className="font-bold text-xl mb-2">{weekday}&apos;s Lunch</div>
                             <p className="text-gray-700 text-base">
@@ -98,7 +98,7 @@ const Sdashboard = () => {
                         </div>
 
                     </li>
-                    <li className="rounded overflow-hidden shadow-lg">
+                    <li className="rounded overflow-hidden shadow-2xl">
                         <div className="px-6 py-4">
                             <div className="font-bold text-xl mb-2">{weekday}&apos;s Dinner</div>
                             <p className="text-gray-700 text-base">
@@ -110,8 +110,9 @@ const Sdashboard = () => {
 
             </div>
             <div>
-                <table>
-                    <caption>Daily Students</caption>
+                <table className="dark:bg-gray-900">
+                    <caption className="dark:text-white
+                    ">Daily Students</caption>
                     <thead>
                         <tr>
                             <th scope="col">NAME</th>
@@ -120,7 +121,7 @@ const Sdashboard = () => {
                             <th scope="col">EMAIL</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         {
                             singleUser.map((fin) => {
                                 var ans = 0;
@@ -129,7 +130,7 @@ const Sdashboard = () => {
                                 })
                                 return (
                                     ans !== 0 ? (
-                                        <tr>
+                                        <tr className="dark:bg-gray-900 dark:text-white">
                                             <td data-label="Name">{ans.name}</td>
                                             <td data-label="REG ID">{ans.regid}</td>
                                             <td data-label="GUESTS">{fin.guests}</td>

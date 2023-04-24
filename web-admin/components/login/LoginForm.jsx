@@ -102,7 +102,7 @@ function LoginForm() {
                 </div>
 
                 <Form.Item>
-                    <div className="flex items-start mb-4">
+                    {/* <div className="flex items-start mb-4">
                         <div className="flex items-start">
                             <div className="flex items-center h-5">
                                 <input
@@ -118,21 +118,21 @@ function LoginForm() {
                                 Remember me
                             </label>
                         </div>
-                    </div>
+                    </div> */}
                     <Button
                         type="primary"
                         className="w-full h-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         htmlType="submit">
                         Login
                     </Button>
-                    <div className="text-sm mt-2 font-medium text-gray-500 dark:text-gray-300">
+                    {/* <div className="text-sm mt-2 font-medium text-gray-500 dark:text-gray-300">
                         Not registered?{" "}
                         <Link
                             href="/register"
                             className="text-blue-700 hover:underline dark:text-blue-500">
                             Create an account
                         </Link>
-                    </div>
+                    </div> */}
                 </Form.Item>
             </Form>
             <ToastContainer />

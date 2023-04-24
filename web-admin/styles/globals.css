@@ -1,6 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300,400;500,600;700&display=swap");
+/* Footer */
+footerBody {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Announcement form */
+announcement-body {
+  font-family: "Poppins", sans-serif !important;
+}
 
 
 /* theme toggler */
@@ -19,6 +30,8 @@
   /* background-color: rgba(0, 0, 0, 0.7); */
   /* backdrop-filter: blur(3px); */
 /* }  */
+
+
 
 
 
@@ -333,7 +346,7 @@ table th {
   text-transform: uppercase;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 840px) {
   table {
     border: 0;
   }

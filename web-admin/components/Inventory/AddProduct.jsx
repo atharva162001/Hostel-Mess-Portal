@@ -22,7 +22,7 @@ const App = () => {
 
     return (
     <div>
-        <div className=' xl:mx-24 justify-center'>
+        <div className='dark:bg-gray-900 pb-12 xl:px-24 justify-center'>
             {/*Form Inputs and ends  */}
             <Form onFinish={onFinish} className='flex p-4  flex-wrap'>
 
@@ -30,7 +30,7 @@ const App = () => {
             {/* form input starts */}
             <div className='w-full md:w-1/2 xl:w-1/4'>
             <Form.Item
-                label="Product Name"
+                label={<span className='dark:text-white'>Product Name</span>}
                 name="name"
                 wrapperCol={{span: 12}}
                 rules={[
@@ -46,7 +46,7 @@ const App = () => {
             
              {/* form input number */}
                 <div className='w-full md:w-1/2 xl:w-1/4 '>
-             <Form.Item label="Quantity"  name="content">
+             <Form.Item label={<span className='dark:text-white'>Quantity</span>}  name="content">
                 <InputNumber />
             </Form.Item>
             </div>
@@ -54,7 +54,7 @@ const App = () => {
 
              <div className="flex w-full xl:w-1/4">   
             {/* for select tag */}
-            <Form.Item className='md :ml-2' label="Category" name="category">   
+            <Form.Item className='md :ml-2' label={<span className='dark:text-white'>Category</span>} name="category">   
             <Select 
                 defaultValue="Select"
                 style={{
