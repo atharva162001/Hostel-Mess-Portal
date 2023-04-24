@@ -43,11 +43,11 @@ function Allstudents() {
         content = <PleaseLog></PleaseLog>;
     } else {
         content = (
-            <div className="pt-20">
+            <div className="pt-20 dark:bg-gray-900">
                 <div className=''></div>
                 <div>
-                    <table>
-                        <caption>All Students</caption>
+                    <table className='dark:bg-gray-900'>
+                        <caption className='dark:text-white'>All Students</caption>
                         <thead>
                             <tr>
                                 <th scope="col">NAME</th>
@@ -61,7 +61,7 @@ function Allstudents() {
                                 users.map((user) => {
                                     return (
 
-                                        <tr key={user.id}>
+                                        <tr className='dark:bg-gray-900 dark:text-white  ' key={user.id}>
                                             <td data-label="Name">{user.name}</td>
                                             <td data-label="REG ID">{user.regid}</td>
                                             <td data-label="EMAIL" className="text-blue-600"><Link href={`mailto:${user.email}`}>{user.email}</Link></td>

@@ -59,7 +59,7 @@ function Notifications() {
                                                 {user.useremail}
                                             </p>
                                             <p>{user.postdate}</p>
-                                            <p class="mt-1 text-sm font-medium text-gray-600">{user.usermessage}</p>
+                                            <p class="mt-1 text-sm font-medium text-gray-400">{user.usermessage}</p>
                                         </div>
                                     </div>
                                 </div>

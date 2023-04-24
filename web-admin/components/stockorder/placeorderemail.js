@@ -38,18 +38,18 @@ const Placeorderemail = (props) => {
 
         <div>
             {
-                !showPlaceorder ? (<div className=" mb-4 rounded overflow-hidden shadow-lg flex mx-4 w-30%">
+                !showPlaceorder ? (<div className=" mb-4 dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg flex mx-4 w-30%">
                     <div class="sm:flex sm:justify-between sm:gap-4 sm:w-50%">
-                        <div className="p-4">
-                            <div>
-                                <h3 class="text-lg text-gray-900 sm:text-xl">
+                        <div className="p-4 ">
+                            <div className='dark:text-white text-gray-900'>
+                                <h3 class="text-lg  sm:text-xl">
                                     Order {props.name}
                                 </h3>
                                 <p >
                                     Current content {props.content}{props.symbol}
                                 </p>
-                                <p class="mt-1 text-sm font-medium text-gray-600">Only {props.content}{props.symbol} is remaining in the stock, please order the necessary supplies.</p>
-                                <button class="inline-block px-4 py-2 text-gray-500 font-semibold border-2 border-gray-500 rounded-md hover:bg-gray-700 hover:text-white hover:border-gray-700 focus:outline-none focus:ring focus:ring-green-100 m-4" onClick={() => setShowPlaceorder(true)}>
+                                <p class="mt-1 text-sm font-medium text-gray-400">Only {props.content}{props.symbol} is remaining in the stock, please order the necessary supplies.</p>
+                                <button class="inline-block px-4 py-2 text-gray-400 font-semibold border-2 border-gray-500 rounded-md hover:bg-gray-700 hover:text-white hover:border-gray-700 focus:outline-none focus:ring focus:ring-green-100 m-4" onClick={() => setShowPlaceorder(true)}>
                                     Place Order
                                 </button>
                             </div>
@@ -57,43 +57,51 @@ const Placeorderemail = (props) => {
                     </div>
                 </div>) : (
                     <form ref={form} onSubmit={(e) => sendEmail(e)} >
-                        <div className="mb-4 rounded overflow-hidden shadow-lg flex mx-4 w-30%">
-                            <div className="sm:flex sm:justify-between sm:gap-4 sm:w-50%">
-                                <div className="p-4">
-                                    <label htmlFor="user_name" className="text-lg text-gray-900 sm:text-xl">
+                        <div className="mb-4 rounded overflow-hidden shadow-lg mx-4 w-30%">
+                            <div className="grid lg:grid-cols-4 md:grid-cols-3 p-4">
+                                <div className="">
+                                    <label htmlFor="user_name" className="font-semibold text-gray-900">
                                         Stock Name :
                                     </label>
                                     <input
-                                        className="mt-1 text-sm font-medium text-gray-600"
+                                        className="mt-1 text-sm font-medium border rounded-md p-0.5 m-0.5  text-gray-600"
                                         type="text"
-                                        placeholder="Enter your name"
+                                        placeholder=" Enter name"
                                         name="user_name"
                                         id="user_name"
                                     />
-                                    <label htmlFor="user_message" className="text-lg text-gray-900 sm:text-xl">
-                                        Requirement Content :
+                                    </div>
+                                    <div>
+                                    <label htmlFor="user_message" className="font-semibold text-gray-900 ">
+                                        Required Content :
                                     </label>
                                     <input
-                                        className="mt-1 text-sm font-medium text-gray-600"
+                                        className="mt-1 text-sm font-medium border rounded-md p-0.5 m-0.5  text-gray-600"
                                         type="number"
-                                        placeholder="Enter req quantity"
+                                        placeholder=" Enter quantity"
                                         name="user_message"
                                         id="user_message"
                                         onChange={(e)=>setContent(e.target.value)}
                                     />
-                                    <label htmlFor="user_category" className="text-lg text-gray-900 sm:text-xl">
+                                    </div>
+                                    <div>
+                                    <label htmlFor="user_category" className="font-semibold text-gray-900">
                                         Select category:
                                     </label>
                                     <input
-                                        className="mt-1 text-sm font-medium text-gray-600"
+                                        className="mt-1 text-sm font-medium border rounded-md p-0.5 m-0.5  text-gray-600"
                                         type="text"
-                                        placeholder="Enter category"
+                                        placeholder=" Enter category"
                                         name="user_category"
                                         id="user_category"
                                     />
                                 </div>
+                                <div>
+                                <button type-="submit" className="rounded-lg mt-1 px-4 py-1 bg-gray-900 text-gray-100 text-xs hover:bg-zinc-500  hover:text-white" >Send</button>
+                                {/* <input className="mt-1 text-sm font-medium hover:bg-blue-700 hover:text-white hover:py-2 hover:px-2 hover:rounded-lg text-gray-600" type="submit" value="Send" /> */}
+                                </div>
                             </div>
-                            <input className="mt-1 text-sm font-medium text-gray-600" type="submit" value="Send" />
+                           
                         </div>
                     </form>
                 )
