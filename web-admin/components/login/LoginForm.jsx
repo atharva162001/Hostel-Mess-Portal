@@ -52,7 +52,7 @@ function LoginForm() {
         };
 
         getUsers();
-    }, []);
+    }, [userCollectionRef]);
 
 
     return (

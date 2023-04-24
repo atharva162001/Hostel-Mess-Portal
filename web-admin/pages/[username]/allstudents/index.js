@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidenavbar from '../../../components/snavbar'
+// import Sidenavbar from '../../../components/snavbar'
 import PleaseLog from "../../../components/login/PleaseLog"
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
@@ -35,7 +35,7 @@ function Allstudents() {
         };
 
         getUsers();
-    }, []);
+    }, [userCollectionRef]);
 
     let content;
 
