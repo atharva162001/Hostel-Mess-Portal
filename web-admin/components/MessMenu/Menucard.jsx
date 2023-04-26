@@ -19,7 +19,9 @@ const Menucard = (props) => {
 
     updateMenu(props.id);
     setVisi1(false);
-    window.location.reload();
+    setTimeout(()=>{
+      window.location.reload();
+    },1000)
   }
   function submit2() {
     const updateMenu = async (id) => {
@@ -29,7 +31,9 @@ const Menucard = (props) => {
     };
     updateMenu(props.id);
     setVisi2(false);
-    window.location.reload();
+    setTimeout(()=>{
+      window.location.reload();
+    },1000)
   }
   function submit3() {
     const updateMenu = async (id) => {
@@ -39,7 +43,9 @@ const Menucard = (props) => {
     };
     updateMenu(props.id);
     setVisi3(false);
-    window.location.reload();
+    setTimeout(()=>{
+      window.location.reload();
+    },1000)
   }
 
   return (
