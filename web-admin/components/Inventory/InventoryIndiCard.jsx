@@ -26,7 +26,9 @@ const InventoryIndiCard = ({id,name,content,category}) => {
 
     updateProduct(id);
     setVisibility(false); // hide the update controls after update
-    window.location.reload();
+    setTimeout(()=>{
+      window.location.reload();
+    },1000)
   }
 
   function onEdit() {
@@ -36,7 +38,9 @@ const InventoryIndiCard = ({id,name,content,category}) => {
   const onDelete= async()=>{
     const userDoc = doc(db,"inventory",id);
     await deleteDoc(userDoc);
-    await window.location.reload();
+    await setTimeout(()=>{
+      window.location.reload();
+    },1000)
   };
 
 
@@ -65,12 +69,12 @@ const InventoryIndiCard = ({id,name,content,category}) => {
                 defaultValue={0}
                 onChange={value => setNewContent(value)}
               />
-              <Button className='border-2  m-2' onClick={onUpdate}>Update</Button>
+              <Button className='border-2  m-2' onClick={()=>onUpdate()}>Update</Button>
             </div>
           ) : (
             <div className='flex'>
-                <Button className='border-2 border-yellow-300 m-1' onClick={onEdit}>Update</Button>
-                <Button className='border-2 border-red-300 m-1 ' onClick={onDelete}>Delete</Button>
+                <Button className='border-2 border-yellow-300 m-1' onClick={()=>onEdit()}>Update</Button>
+                <Button className='border-2 border-red-300 m-1 ' onClick={()=>onDelete()}>Delete</Button>
             </div>
             
           )}
