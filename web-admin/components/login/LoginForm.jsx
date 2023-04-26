@@ -81,7 +81,7 @@ function LoginForm() {
                                 message: "Please input your username!",
                             },
                         ]}>
-                        <Input type="text" placeholder="name@example.com" />
+                        <Input type="text" placeholder="123" />
                     </Form.Item>
                 </div>
                 <div>
@@ -97,7 +97,7 @@ function LoginForm() {
                                 message: "Please input your password!",
                             },
                         ]}>
-                        <Input.Password placeholder="********" />
+                        <Input.Password placeholder="123" />
                     </Form.Item>
                 </div>
 
