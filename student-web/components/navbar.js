@@ -1,66 +1,39 @@
-import React from "react";
+// import Switch from "./themeswitch/switch"
+import React,{useEffect, useState} from "react";
+import Link from "next/link";
+function Navbar() {
+   const [userName,setUserName]=useState("");
+   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  //  useEffect(()=>{
+  //     setUserName(localStorage.getItem("username"));
+  //  },[]);
+   return (
+      <div className="dark:bg-gray-900 bg-[#64748b] z-10 w-full xl:grid xl:place-items-center fixed">
+         <nav className="dark:bg-gray-900 bg- text-slate-200 xl:flex xl:container ">
+            <div className="flex">
+               <img className="mt-4 pb-4" src="/logo.png"/>
+               <Link className="m-4 text-lg text-black dark:text-white hover:text-white font-bold " href="/">VJTI MESS</Link>
+               <button className="px-2 pb-1 ml-auto mr-16 font-bold rounded text-black hover:rounded  dark:text-white hover:bg-blue-700 hover:text-white xl:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>Menu</button>
+            </div>
+            <ul className={(showMobileMenu ? "" : "hidden") + ` xl:ml-2 xl:flex pb-2 xl:gap-0  `}>
+               <li className="py-2 grid place-items-center xl:mx-2"><Link href={`/${userName}`} className="p-2  text-black dark:text-white text-center  rounded font-bold hover:bg-blue-700 hover:text-white">Dashboard</Link></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/inventory`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Inventory</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/notifications`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Notifications</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/announcements`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Announcements</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/verification`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Verification</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/messmenu`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">MessMenu</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/reminder`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Reminder</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/scanqr`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">QRScanner</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/allstudents`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">AllStudents</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><a href="/" className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Logout</a></li>
 
-const Navbar = () => {
-  return (
-    <nav class="nav flex flex-wrap items-center justify-between px-4">
-      <div class="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest">
-        <svg
-          class="fill-current h-8 mr-2 w-8"
-          xmlns="http://www.w3.org/2000/svg"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="1.5"
-          clip-rule="evenodd"
-          viewBox="0 0 716 895"
-        >
-          <path d="M357.776 0l357.77 178.885v536.657l-357.77 178.89L0 715.542V178.885"></path>
-          <path
-            class="text-white fill-current"
-            d="M357.776 804.982l268.32-134.16v-178.89l-89.44-44.72 89.44-44.72V223.606L357.776 89.442v626.1l-178.89-89.44V178.885l-89.443 44.721v447.216l268.333 134.16z"
-          ></path>
-          <path d="M447.216 670.822l89.44-44.72v-89.45l-89.44-44.72v178.89zM447.216 402.492l89.44-44.721v-89.443l-89.44-44.722"></path>
-        </svg>
-        <span class="font-semibold text-xl tracking-tight">Luke Bennett</span>
+
+            </ul>
+            {/* <Switch></Switch> */}
+         </nav>
       </div>
+   );
+}
 
-      <input class="menu-btn hidden" type="checkbox" id="menu-btn" />
-      <label
-        class="menu-icon block cursor-pointer md:hidden px-2 py-4 relative select-none"
-        for="menu-btn"
-      >
-        <span class="navicon bg-grey-darkest flex items-center relative"></span>
-      </label>
-
-      <ul class="menu border-b md:border-none flex justify-end list-reset m-0 w-full md:w-auto">
-        <li class="border-t md:border-none">
-          <a
-            href="/"
-            class="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker font-bold"
-          >
-            Home
-          </a>
-        </li>
-
-        <li class="border-t md:border-none">
-          <a
-            href="/about/"
-            class="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"
-          >
-            About
-          </a>
-        </li>
-
-        <li class="border-t md:border-none">
-          <a
-            href="/blog/"
-            class="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"
-          >
-            Blog
-          </a>
-        </li>
-      </ul>
-    </nav>
-  );
-};
 
 export default Navbar;
