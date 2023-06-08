@@ -5,7 +5,6 @@ function UserProfile() {
     <div className='font-mono text-2xl text-gray-800 '>
       <div class="wrapper pt-20">
         <img src="https://media.licdn.com/dms/image/D4D03AQH4RE-pheqtkg/profile-displayphoto-shrink_800_800/0/1669533852695?e=1691625600&v=beta&t=MoOdO-37au2xXgiv3EgplM6W027ReSGwqkiREsySjiE" class="image--cover" />
-
       </div>
       <div class="text-center mt-4 content-center">
         <h3 class="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight text-gray-900">
