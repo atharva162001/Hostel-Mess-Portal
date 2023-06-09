@@ -14,7 +14,7 @@ function Notification() {
       };
 
       getUsers();
-  }, []);
+  }, [userCollectionRef]);
   return (
     <div className="pt-20">
     <div class="text-center mb-16">

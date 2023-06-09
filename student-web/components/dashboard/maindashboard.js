@@ -26,7 +26,7 @@ const Maindashboard = () => {
             setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         };
         getUsers();
-    }, []);
+    }, [userCollectionRef]);
     useEffect(() => {
         users.map((user) => {
             if (user.Day === weekday) {

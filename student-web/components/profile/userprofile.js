@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { db } from "../../firebase-config";
 import { getDocs, collection } from "@firebase/firestore";
+import Image from 'next/image';
 function UserProfile() {
   const router = useRouter();
   const userCollectionRef = collection(db, "allstudents");
@@ -15,7 +16,7 @@ function UserProfile() {
     };
 
     getUsers();
-  }, []);
+  }, [userCollectionRef]);
   const [loggeduser, setLoggedUser] = useState("nouser");
   const [paramUser, setParamUser] = useState("");
   useEffect(() => {
@@ -34,7 +35,7 @@ function UserProfile() {
           return (user.regno === loggeduser) ? (
             <div>
               <div className="flex items-center justify-center pt-20">
-                <img src={user.imagedrive} className="image--cover" />
+                <Image src={user.imagedrive} className="image--cover" alt="photo" />
               </div>
 
               <div class="text-center mt-4 content-center">

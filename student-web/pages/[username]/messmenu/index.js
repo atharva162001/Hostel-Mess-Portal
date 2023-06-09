@@ -36,7 +36,7 @@ function Messmenu() {
         };
 
         getUsers();
-    }, []);
+    }, [userCollectionRef]);
     let content;
 
     if (paramUser==="nouser") {

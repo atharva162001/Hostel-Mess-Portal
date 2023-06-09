@@ -33,7 +33,7 @@ const PreviewPage = () => {
       }
     }
 
-  }, [success, canceled]);
+  }, [success, canceled,router]);
 
   return (
     <form  onSubmit={()=>router.push(`${loggeduser}/checkout_sessions`)} method="SUBMIT" className="flex justify-center items-center">
