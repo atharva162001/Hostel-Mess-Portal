@@ -24,7 +24,7 @@ function Complaintbox() {
   // --------------------------------------authentication end------------------------------
   let content;
 
-  if (loggeduser !== paramUser) {
+  if (paramUser==="nouser") {
     content = <PleaseLog></PleaseLog>;
   } else {
     content = (

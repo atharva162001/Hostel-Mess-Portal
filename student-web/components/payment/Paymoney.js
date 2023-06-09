@@ -1,6 +1,6 @@
 import React from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { useRouter } from 'next/router';
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -8,7 +8,17 @@ loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 const PreviewPage = () => {
   const router = useRouter();
   const { success, canceled } = router.query;
-  // const router=useRouter();
+  const [loggeduser, setLoggedUser] = useState("nouser");
+  const [paramUser, setParamUser] = useState("");
+  useEffect(() => {
+    // checking login
+    setLoggedUser(localStorage.getItem("username"));
+    const url = router.asPath;
+    const result = url.split('/');
+    const Param = result[result.length - 2];
+    setParamUser(Param);
+
+  }, [router]);
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     // const query = new URLSearchParams(window.location.search);
@@ -26,7 +36,7 @@ const PreviewPage = () => {
   }, [success, canceled]);
 
   return (
-    <form action="/api/checkout_sessions" method="POST" className="flex justify-center items-center">
+    <form  onSubmit={()=>router.push(`${loggeduser}/checkout_sessions`)} method="SUBMIT" className="flex justify-center items-center">
     <section className=" flex flex-col w-96 h-36 rounded-lg justify-center">
       <button type="submit" role="link" className="h-10 bg-indigo-600 rounded-md text-white font-semibold hover:opacity-80">
         Checkout

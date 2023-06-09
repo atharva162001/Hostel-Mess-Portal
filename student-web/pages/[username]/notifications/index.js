@@ -23,11 +23,13 @@ function StudentNotification() {
     // --------------------------------------authentication end------------------------------
     let content;
 
-    if (loggeduser !== paramUser) {
+    if (paramUser==="nouser") {
       content = <PleaseLog></PleaseLog>;
     } else {
       content = (
-        <div> <Notification/></div>
+        <div>
+        <div>{console.log(paramUser)}</div>
+        <Notification/></div>
       )
     }
     return content;

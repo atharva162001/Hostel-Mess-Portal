@@ -252,10 +252,23 @@ td.text-right {
   align-items: center;
 }
 
-.image--cover {
+img.image--cover {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center right;
+}
+
+
+
+.homepageImage {
+  background-image: url("/images/homepage.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dark .homepageImage {
+  background-image: url("/images/homepageDark.png");
 }

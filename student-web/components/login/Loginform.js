@@ -12,47 +12,36 @@ function LoginForm() {
     const [users, setUsers] = useState([]);
     const userCollectionRef = collection(db, "studententry");
 
-    const onFinish = async (values) => {
-        
-        var status = 400;
-        console.log(users);
-        // checking if user and pass match or not
-            users.map((user) => {
-                user.username === values.username && user.password === values.password
-                    ? (status = 200)
-                    : (<></>);
-            });
+ const onFinish = async (values) => {
+  var status = 400;
+  console.log(users);
 
-        // setting local storage for future user
-        console.log(values);
-        if (status == 200) {
-            localStorage.setItem("username", values.username);
-            localStorage.setItem("name",values.name );
-            toast("Logged Successsfully!");
-            router.push("/"+ values.username);
-        } else {
-            localStorage.setItem("username", "nouser");
-            localStorage.setItem("name","nouser" );
-            toast("Invalid credentials!");
-            router.push("/");
-        }
-    };
+  // checking if user and pass match or not
+  const matchedUser =()=>{ users.find(
+    (user) => user.username === values.username && user.password === values.password
+  );
+  }
+  if (matchedUser) {
+    status = 200;
+  }
+  
+await matchedUser();
+  console.log(values);
+  if (status === 200) {
+    localStorage.setItem("username", values.username);
+    localStorage.setItem("name", values.name);
+    toast("Logged Successfully!");
+    router.push("/" + values.username);
+  } else {
 
+    localStorage.setItem("username", "nouser");
+    localStorage.setItem("name", "nouser");
+    toast("Invalid credentials!");
+    router.push("/");
+  }
+};
 
-      useEffect(() => {
-        // setting logged state to be initial if loaded
-        localStorage.setItem("username", "nouser");
-            localStorage.setItem("name","nouser" );
-
-        const getUsers = async () => {
-        const data = await getDocs(userCollectionRef);
-        // console.log(data);
-        // setUsers(data);
-        setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        };
-
-        getUsers();
-    }, [userCollectionRef]);
+      
 
 
     return (
@@ -125,14 +114,14 @@ function LoginForm() {
                         htmlType="submit">
                         Login
                     </Button>
-                    {/* <div className="text-sm mt-2 font-medium text-gray-500 dark:text-gray-300">
+                     <div className="text-sm mt-2 font-medium text-gray-500 dark:text-gray-300">
                         Not registered?{" "}
                         <Link
                             href="/register"
                             className="text-blue-700 hover:underline dark:text-blue-500">
                             Create an account
                         </Link>
-                    </div> */}
+                    </div> 
                 </Form.Item>
             </Form>
             <ToastContainer />

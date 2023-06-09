@@ -3,7 +3,7 @@ import Dashboard from "../../components/dashboard/maindashboard"
 import PleaseLog from "../../components/login/Pleaselog"
 import { useRouter } from 'next/router';
 import { useEffect ,useState} from 'react';
-
+import Signup from '@/components/login/singup';
 function Home() {
     const router = useRouter();
     const [loggeduser,setLoggedUser]=useState("nouser");
