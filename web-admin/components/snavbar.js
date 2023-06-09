@@ -17,14 +17,14 @@ function Navbar() {
             </div>
             <ul className={(showMobileMenu ? "" : "hidden") + ` xl:ml-2 xl:flex pb-2 xl:gap-0  `}>
                <li className="py-2 grid place-items-center xl:mx-2"><Link href={`/${userName}`} className="p-2  text-black dark:text-white text-center  rounded font-bold hover:bg-blue-700 hover:text-white">Dashboard</Link></li>
-               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/inventory`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Inventory</a></li>
-               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/notifications`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Notifications</a></li>
-               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/announcements`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Announcements</a></li>
-               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/verification`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Verification</a></li>
-               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/messmenu`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">MessMenu</a></li>
-               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/reminder`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Reminder</a></li>
-               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/scanqr`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">QRScanner</a></li>
-               <li className="py-2 grid place-items-center xl:mx-2"><a href={`/${userName}/allstudents`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">AllStudents</a></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><Link href={`/${userName}/inventory`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Inventory</Link></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><Link href={`/${userName}/notifications`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Notifications</Link></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><Link href={`/${userName}/announcements`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Announcements</Link></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><Link href={`/${userName}/verification`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Verification</Link></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><Link href={`/${userName}/messmenu`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">MessMenu</Link></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><Link href={`/${userName}/reminder`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Reminder</Link></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><Link href={`/${userName}/scanqr`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">QRScanner</Link></li>
+               <li className="py-2 grid place-items-center xl:mx-2"><Link href={`/${userName}/allstudents`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">AllStudents</Link></li>
 
             </ul>
             <Switch></Switch>

@@ -51,7 +51,6 @@ const Sdashboard = () => {
             }
         };
         getDailydata();
-
         const getStudentdata = async () => {
             const studentdata = await getDocs(studentCollectionref);
             setStudentdata(studentdata.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -65,7 +64,6 @@ const Sdashboard = () => {
             }
         })
     }, [users, weekday])
-
     return (
         <div className=" pt-20 dark:bg-gray-900">
             <div className="">
@@ -134,7 +132,7 @@ const Sdashboard = () => {
                                             <td data-label="Name">{ans.name}</td>
                                             <td data-label="REG ID">{ans.regid}</td>
                                             <td data-label="GUESTS">{fin.guests}</td>
-                                            <td data-label="EMAIL" className="text-blue-600"><Link  href={`mailto:${ans.email}`}>{ans.email}</Link></td>
+                                            <td data-label="EMAIL" className="text-blue-600"><Link href={`mailto:${ans.email}`}>{ans.email}</Link></td>
                                         </tr>
                                     ) : (console.log("not found"))
                                 );
@@ -143,7 +141,6 @@ const Sdashboard = () => {
                     </tbody>
                 </table>
             </div>
-
         </div>
     );
 }
