@@ -36,7 +36,7 @@ const PreviewPage = () => {
   }, [success, canceled,router]);
 
   return (
-    <form  action="/api/checkout_sessions" method="SUBMIT" className="flex justify-center items-center">
+    <form  action="/api/checkout_sessions/index.js" method="SUBMIT" className="flex justify-center items-center">
     <section className=" flex flex-col w-96 h-36 rounded-lg justify-center">
       <button type="submit" role="link" className="h-10 bg-indigo-600 rounded-md text-white font-semibold hover:opacity-80">
         Checkout
