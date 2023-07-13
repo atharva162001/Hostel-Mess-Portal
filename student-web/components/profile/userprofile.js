@@ -11,12 +11,12 @@ function UserProfile() {
   useEffect(() => {
     const getUsers = async () => {
       const data = await getDocs(userCollectionRef);
-      // console.log(data);
       setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
-
+  
     getUsers();
-  }, [userCollectionRef]);
+  }, []);
+  
   const [loggeduser, setLoggedUser] = useState("nouser");
   const [paramUser, setParamUser] = useState("");
   useEffect(() => {

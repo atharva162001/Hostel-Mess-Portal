@@ -5,16 +5,25 @@ import { db } from "../../firebase-config";
 import { collection, getDocs, addDoc, doc, updateDoc, deleteDoc } from "@firebase/firestore"
 function Notification() {
   const [users, setUsers] = useState([]);
-  const userCollectionRef = collection(db, "announcements");
+  const userCollectionRef = collection(db, "complaint");
   useEffect(() => {
-      const getUsers = async () => {
-          const data = await getDocs(userCollectionRef);
-          // console.log(data);
-          setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      };
-
-      getUsers();
+    const getUsers = async () => {
+      const data = await getDocs(userCollectionRef);
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+  
+    getUsers();
+  }, []);
+  
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(userCollectionRef);
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+  
+    getUsers();
   }, [userCollectionRef]);
+  
   return (
     <div className="pt-20">
     <div class="text-center mb-16">

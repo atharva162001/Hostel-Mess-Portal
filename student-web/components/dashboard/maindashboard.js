@@ -21,12 +21,16 @@ const Maindashboard = () => {
         const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const weekday = daysOfWeek[today.getDay()];
         setWeekday(weekday);
-        const getUsers = async () => {
-            const data = await getDocs(userCollectionRef);
-            setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        };
+      }, []);
+      
+      const getUsers = async () => {
+        const data = await getDocs(userCollectionRef);
+        setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      };
+      
+      useEffect(() => {
         getUsers();
-    }, [userCollectionRef]);
+      }, []);
     useEffect(() => {
         users.map((user) => {
             if (user.Day === weekday) {

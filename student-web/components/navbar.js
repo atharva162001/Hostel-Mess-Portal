@@ -2,6 +2,7 @@
 import React,{useEffect, useState} from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Height } from "@mui/icons-material";
 function Navbar() {
    const [userName,setUserName]=useState("");
    const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -12,7 +13,7 @@ function Navbar() {
       <div className="dark:bg-gray-900 bg-[#64748b] z-10 w-full xl:grid xl:place-items-center fixed">
          <nav className="dark:bg-gray-900 bg- text-slate-200 xl:flex xl:container ">
             <div className="flex">
-               <Image className="mt-4 pb-4" src="/logo.png" alt="logo"/>
+               <Image className="mt-4 pb-4 w-10 h-10" src="/logo.png" alt="logo" width="40" height="40" />
                <Link className="m-4 text-lg text-black dark:text-white hover:text-white font-bold " href="/">VJTI MESS</Link>
                <button className="px-2 pb-1 ml-auto mr-16 font-bold rounded text-black hover:rounded  dark:text-white hover:bg-blue-700 hover:text-white xl:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>Menu</button>
             </div>
