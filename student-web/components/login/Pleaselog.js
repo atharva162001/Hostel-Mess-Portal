@@ -11,7 +11,7 @@ function Heading() {
          
           return () => clearTimeout(timeout); // clean up the timeout on unmount  
 
-    }, [router]);
+    }, []);
     
   return (
     <div>

@@ -43,7 +43,7 @@ function Messmenu() {
         return () => {
           isMounted = false; // Set the flag to false when the component unmounts
         };
-      }, [userCollectionRef]);
+      }, []);
       
     let content;
 

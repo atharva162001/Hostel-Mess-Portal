@@ -1,0 +1,34 @@
+   
+            <div className="">
+            </div>
+            <div className="messmenuwrapper">
+                <ul className="messmenuflex messmenucards">
+                    <li className="rounded overflow-hidden shadow-2xl">
+                        <div className="px-6 py-4">
+                            <div className="font-bold text-xl mb-2">{weekday}&apos;s Breakfast</div>
+                            <p className="text-gray-700 text-base">
+                                {breakfast}
+                            </p>
+                        </div>
+
+                    </li>
+                    <li className="rounded overflow-hidden shadow-2xl">
+                        <div className="px-6 py-4">
+                            <div className="font-bold text-xl mb-2">{weekday}&apos;s Lunch</div>
+                            <p className="text-gray-700 text-base">
+                                {lunch}
+                            </p>
+                        </div>
+                    </li>
+                    <li className="rounded overflow-hidden shadow-2xl">
+                        <div className="px-6 py-4">
+                            <div className="font-bold text-xl mb-2">{weekday}&apos;s Dinner</div>
+                            <p className="text-gray-700 text-base">
+                                {dinner}
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            

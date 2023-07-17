@@ -16,7 +16,7 @@ function Home() {
         const Param = result[result.length - 1];
         setParamUser(Param);
 
-    }, [router]);
+    }, []);
 
   return (
     <div>

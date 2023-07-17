@@ -1,0 +1,7 @@
+  {
+        users.map((user) => {
+          return (user.email === loggeduser) ? (
+           console.log(user)
+          ) : (<></>)
+        })
+      }
