@@ -25,7 +25,6 @@ function Navbar() {
                <li className="py-2 grid place-items-center xl:mx-2"><Link href={`/${userName}/reminder`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">Reminder</Link></li>
                <li className="py-2 grid place-items-center xl:mx-2"><Link href={`/${userName}/scanqr`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">QRScanner</Link></li>
                <li className="py-2 grid place-items-center xl:mx-2"><Link href={`/${userName}/allstudents`} className="p-2  text-black dark:text-white text-center rounded font-bold hover:bg-blue-700 hover:text-white">AllStudents</Link></li>
-
             </ul>
             <Switch></Switch>
          </nav>
