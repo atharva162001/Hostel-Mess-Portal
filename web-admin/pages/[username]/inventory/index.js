@@ -38,4 +38,4 @@ function Inventory() {
   return content;
 }
 
-export default index;
+export default Inventory;
