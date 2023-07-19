@@ -3,6 +3,7 @@ import React from 'react'
 import PleaseLog from '../../../components/login/Pleaselog'
 import { useRouter } from 'next/router';
 import { useState,useEffect } from 'react';
+import Navbar from '@/components/navbar';
 function Dashboard() {
    // ------------------------------authentication---------------------------------
     //  -----------------------------------------------------------------------------
@@ -17,7 +18,7 @@ function Dashboard() {
         const Param = result[result.length - 2];
         setParamUser(Param);
 
-    }, [router]);
+    }, []);
 
     //  --------------------------------------------------------------------------------------
     // --------------------------------------authentication end------------------------------
@@ -28,7 +29,9 @@ function Dashboard() {
     content = <PleaseLog></PleaseLog>;
   } else {
     content = (
-      <div> <Maindashboard /></div>
+      <div> 
+      <Maindashboard />
+      </div>
     )
   }
   return content;

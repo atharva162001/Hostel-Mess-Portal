@@ -21,29 +21,23 @@ function Messmenu() {
         const Param = result[result.length - 2];
         setParamUser(Param);
 
-    }, [router]);
+    }, []);
 
     //  --------------------------------------------------------------------------------------
     // --------------------------------------authentication end------------------------------
 
+  
     const [users, setUsers] = useState([]);
     const userCollectionRef = collection(db, "Messmenu");
     useEffect(() => {
-        let isMounted = true; // Add a flag to track if the component is still mounted
-      
-        const getUsers = async () => {
-          const data = await getDocs(userCollectionRef);
-          if (isMounted) { // Check if the component is still mounted before updating state
-            setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-          }
-        };
-      
-        getUsers();
-      
-        return () => {
-          isMounted = false; // Set the flag to false when the component unmounts
-        };
-      }, []);
+      const getUsers = async () => {
+        const data = await getDocs(userCollectionRef);
+        // console.log(data);
+        setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      };
+  
+      getUsers();
+    }, []);
       
     let content;
 

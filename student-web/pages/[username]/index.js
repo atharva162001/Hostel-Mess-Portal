@@ -20,7 +20,9 @@ function Home() {
 
   return (
     <div>
-        {loggeduser===paramUser?(<Dashboard></Dashboard>):(<PleaseLog></PleaseLog>)} 
+        {loggeduser===paramUser?(
+          <Dashboard></Dashboard>
+          ):(<PleaseLog></PleaseLog>)} 
     </div>
   )
 }

@@ -17,8 +17,8 @@ function Complaintbox() {
     const result = url.split('/');
     const Param = result[result.length - 2];
     setParamUser(Param);
-
-  }, [router]);
+    
+  }, []);
 
   //  --------------------------------------------------------------------------------------
   // --------------------------------------authentication end------------------------------

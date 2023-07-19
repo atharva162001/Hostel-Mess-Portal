@@ -3,6 +3,7 @@ import Notification from '@/components/notifications/notification'
 import PleaseLog from '../../../components/login/Pleaselog'
 import { useRouter } from 'next/router';
 import { useState,useEffect } from 'react';
+import Navbar from '@/components/navbar';
 function StudentNotification() {
    // ------------------------------authentication---------------------------------
     //  -----------------------------------------------------------------------------
@@ -16,9 +17,9 @@ function StudentNotification() {
         const result = url.split('/');
         const Param = result[result.length - 2];
         setParamUser(Param);
-
-    }, [router]);
-
+        console.log("It's Route")
+    }, []);
+    console.log(loggeduser)
     //  --------------------------------------------------------------------------------------
     // --------------------------------------authentication end------------------------------
     let content;
@@ -28,7 +29,6 @@ function StudentNotification() {
     } else {
       content = (
         <div>
-        <div>{console.log(paramUser)}</div>
         <Notification/></div>
       )
     }
