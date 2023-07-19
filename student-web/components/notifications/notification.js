@@ -5,7 +5,7 @@ import { db } from "../../firebase-config";
 import { collection, getDocs, addDoc, doc, updateDoc, deleteDoc } from "@firebase/firestore"
 function Notification() {
   const [users, setUsers] = useState([]);
-  const userCollectionRef = collection(db, "complaint");
+  const userCollectionRef = collection(db, "announcements");
   const getUsers = async () => {
     const data = await getDocs(userCollectionRef);
     setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
