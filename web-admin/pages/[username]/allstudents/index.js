@@ -35,7 +35,7 @@ function Allstudents() {
         };
 
         getUsers();
-    }, [userCollectionRef]);
+    }, []);
 
     let content;
 

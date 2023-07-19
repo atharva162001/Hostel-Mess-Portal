@@ -12,14 +12,14 @@ function Notifications() {
      const [loggeduser,setLoggedUser]=useState("nouser");
      const [paramUser,setParamUser]=useState("");
      useEffect(() => {
-         // checking login
-         setLoggedUser(localStorage.getItem("username"));
-         const url = router.asPath;
-         const result = url.split('/');
-         const Param = result[result.length - 2];
-         setParamUser(Param);
- 
-     }, [router]);
+        // checking login
+        setLoggedUser(localStorage.getItem("username"));
+        const url = router.asPath;
+        const result = url.split('/');
+        const Param = result[result.length - 2];
+        setParamUser(Param);
+
+    }, [router]);
  
     //  --------------------------------------------------------------------------------------
      // --------------------------------------authentication end------------------------------

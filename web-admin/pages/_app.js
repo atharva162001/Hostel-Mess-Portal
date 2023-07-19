@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
 
     useEffect(()=>{
       setLoggedUser(localStorage.getItem("username"));
-    },[router]);
+    },[]);
 
     const isMyRoute = router.asPath.startsWith(`/${loggeduser}`);
 

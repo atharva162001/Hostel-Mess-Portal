@@ -11,42 +11,45 @@ function LoginForm() {
   const router = useRouter();
   const [users, setUsers] = useState([]);
   const userCollectionRef = collection(db, "studententry");
-  useEffect(() => {
-    const getUsers = async () => {
-        const data = await getDocs(userCollectionRef);
-        setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      };
-      getUsers();
-  }, []);
   const onFinish = async (values) => {
+        
     var status = 400;
     console.log(users);
-
     // checking if user and pass match or not
-    const matchedUser = () => {
-      users.find(
-        (user) =>
-          user.username === values.username && user.password === values.password
-      );
-    };
-    if (matchedUser) {
-      status = 200;
-    }
+        users.map((user) => {
+            user.username === values.username && user.password === values.password
+                ? (status = 200)
+                : (<></>);
+        });
 
-    await matchedUser();
+    // setting local storage for future user
     console.log(values);
-    if (status === 200) {
-      localStorage.setItem("username", values.username);
-      localStorage.setItem("name", values.name);
-      toast("Logged Successfully!");
-      router.push("/" + values.username);
+    if (status == 200) {
+        localStorage.setItem("username", values.username);
+        localStorage.setItem("name",values.name );
+        toast("Logged Successsfully!");
+        router.push("/"+ values.username);
     } else {
-      localStorage.setItem("username", "nouser");
-      localStorage.setItem("name", "nouser");
-      toast("Invalid credentials!");
-      router.push("/");
+        localStorage.setItem("username", "nouser");
+        localStorage.setItem("name","nouser" );
+        toast("Invalid credentials!");
+        router.push("/");
     }
-  };
+};
+useEffect(() => {
+    // setting logged state to be initial if loaded
+    localStorage.setItem("username", "nouser");
+        localStorage.setItem("name","nouser" );
+
+    const getUsers = async () => {
+    const data = await getDocs(userCollectionRef);
+    // console.log(data);
+    // setUsers(data);
+    setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getUsers();
+}, []);
 
   return (
     <div className="pt-20">

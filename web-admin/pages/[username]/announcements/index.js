@@ -15,10 +15,11 @@ function Announcements() {
     // checking login
     setLoggedUser(localStorage.getItem("username"));
     const url = router.asPath;
-    const result = url.split("/");
+    const result = url.split('/');
     const Param = result[result.length - 2];
     setParamUser(Param);
-  }, [router]);
+
+}, [router]);
 
   //  --------------------------------------------------------------------------------------
   // --------------------------------------authentication end------------------------------

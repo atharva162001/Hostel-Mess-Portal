@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
     },[]);
 
     const isMyRoute = router.asPath.startsWith(`/${loggeduser}`);
-
+    
     if (isMyRoute) {
       return (
         <div>
