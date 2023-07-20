@@ -8,7 +8,7 @@ function Studentcomplaint() {
     const [email, setemail] = useState("");
     const [subject, setsubject] = useState("");
     const [message, setmessage] = useState("");
-    const userCollectionRef = collection(db, "complaint");
+    const userCollectionRef = collection(db, "complaints");
     const [submitted,setSubmitted]=useState(false);
     const handleSubmit = async (event) => {
         event.preventDefault();
